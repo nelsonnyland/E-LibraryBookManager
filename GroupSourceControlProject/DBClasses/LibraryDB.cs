@@ -6,7 +6,26 @@ using System.Threading.Tasks;
 
 namespace GroupSourceControlProject
 {
-    class LibraryDB
+    static class LibraryDB
     {
+        public static List<Book> GetAllBooks()
+        {
+            throw new NotImplementedException();
+        }
+
+        public static bool IsChecked(Book book)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static bool CheckOut(Book book)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static bool CheckIn(Book book)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
