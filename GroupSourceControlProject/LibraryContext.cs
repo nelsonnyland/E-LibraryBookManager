@@ -21,6 +21,8 @@ namespace GroupSourceControlProject
         // on configuring and using a Code First model, see http://go.microsoft.com/fwlink/?LinkId=390109.
 
         // public virtual DbSet<MyEntity> MyEntities { get; set; }
+        public virtual DbSet<LibraryContext> LibraryDB { get; set; }
+        public virtual DbSet<LibraryContext> MemberDB { get; set; }
     }
 
     //public class MyEntity
