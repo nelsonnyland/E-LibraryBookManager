@@ -54,6 +54,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ObjClasses\Book.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -61,8 +62,9 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="LibraryContext.cs" />
-    <Compile Include="LibraryDB.cs" />
-    <Compile Include="MemberDB.cs" />
+    <Compile Include="DBClasses\LibraryDB.cs" />
+    <Compile Include="ObjClasses\Member.cs" />
+    <Compile Include="DBClasses\MemberDB.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -89,5 +91,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
