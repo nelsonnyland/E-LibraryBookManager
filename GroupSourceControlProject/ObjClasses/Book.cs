@@ -12,6 +12,8 @@ namespace GroupSourceControlProject
         [Key]
         public int BookID { get; set; }
 
+        public string ISBN { get; set; }
+
         public string Title { get; set; }
 
         public string Author { get; set; }
@@ -19,5 +21,8 @@ namespace GroupSourceControlProject
         public int PubDate { get; set; }
 
         public bool CheckedOut { get; set; }
+
+        public string Category { get; set; }
+
     }
 }
