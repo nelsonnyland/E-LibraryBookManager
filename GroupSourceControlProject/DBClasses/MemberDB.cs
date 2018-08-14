@@ -9,6 +9,18 @@ namespace GroupSourceControlProject
 {
     public static class MemberDB
     {
+        public static Member CurrentMember { get; set; }
+
+        public static Member GetCurrentMember()
+        {
+            return CurrentMember;
+        }
+
+        public static void SetCurrentMember(Member member)
+        {
+            CurrentMember = member;
+        }
+
         public static void AddMember(Member m)
         {
             LibraryContext context = new LibraryContext();
@@ -51,12 +63,7 @@ namespace GroupSourceControlProject
 
         public static bool LogIn(Member member)
         {
-            throw new NotImplementedException();
-        }
-
-        public static Member CurrentMember()
-        {
-
+            // log-in member
         }
 
         public static bool HasBooks(Member member)

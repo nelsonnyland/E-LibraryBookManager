@@ -19,10 +19,10 @@ namespace GroupSourceControlProject
 
         private void frmLibrary_Load(object sender, EventArgs e)
         {
-            Member member = 
+            Member member = MemberDB.GetCurrentMember();
 
             List<Book> checkedBooks 
-                = MemberDB.GetAllMembersBooks();
+                = MemberDB.GetAllMembersBooks(member);
         }
     }
 }
