@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GroupSourceControlProject
 {
-    static class LibraryDB
+    public static class LibraryDB
     {
         public static void AddBook(Book b) //AddBookToDB?
         {
@@ -46,8 +46,7 @@ namespace GroupSourceControlProject
         }
 
         public static List<Book> GetAllBooks()
-        {
-            // Maybe make a separate method for GetAllMembersBooks()
+        {            
             throw new NotImplementedException();
         }
 

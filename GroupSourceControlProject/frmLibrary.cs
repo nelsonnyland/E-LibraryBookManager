@@ -10,11 +10,19 @@ using System.Windows.Forms;
 
 namespace GroupSourceControlProject
 {
-    public partial class Form1 : Form
+    public partial class frmLibrary : Form
     {
-        public Form1()
+        public frmLibrary()
         {
             InitializeComponent();
+        }
+
+        private void frmLibrary_Load(object sender, EventArgs e)
+        {
+            Member member = MemberDB.GetCurrentMember();
+
+            List<Book> checkedBooks 
+                = MemberDB.GetAllMembersBooks(member);
         }
     }
 }

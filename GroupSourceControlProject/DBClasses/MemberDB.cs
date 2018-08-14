@@ -7,8 +7,20 @@ using System.Threading.Tasks;
 
 namespace GroupSourceControlProject
 {
-    static class MemberDB
+    public static class MemberDB
     {
+        public static Member CurrentMember { get; set; }
+
+        public static Member GetCurrentMember()
+        {
+            return CurrentMember;
+        }
+
+        public static void SetCurrentMember(Member member)
+        {
+            CurrentMember = member;
+        }
+
         public static void AddMember(Member m)
         {
             LibraryContext context = new LibraryContext();
@@ -51,7 +63,7 @@ namespace GroupSourceControlProject
 
         public static bool LogIn(Member member)
         {
-            throw new NotImplementedException();
+            // log-in member
         }
 
         public static bool HasBooks(Member member)
@@ -59,7 +71,7 @@ namespace GroupSourceControlProject
             throw new NotImplementedException();
         }
 
-        public static List<Book> GetChecked(Member member)
+        public static List<Book> GetAllMembersBooks(Member member)
         {
             throw new NotImplementedException();
         }
