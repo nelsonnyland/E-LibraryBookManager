@@ -12,6 +12,8 @@ namespace GroupSourceControlProject
         [Key]
         public int CardNumber { get; set; }
 
+        public int PIN { get; set; }
+
         public string LastName { get; set; }
 
         public string FirstName { get; set; }

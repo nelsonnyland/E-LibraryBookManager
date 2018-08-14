@@ -144,6 +144,7 @@
             this.Controls.Add(this.btnCancel);
             this.Name = "frmLibrary";
             this.Text = "frmLibrary";
+            this.Load += new System.EventHandler(this.frmLibrary_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

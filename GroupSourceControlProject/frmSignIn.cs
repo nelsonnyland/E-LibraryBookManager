@@ -19,7 +19,21 @@ namespace GroupSourceControlProject
 
         private void btnSignIn_Click(object sender, EventArgs e)
         {
+            Member member = new Member();
 
+            member.CardNumber = 
+                Convert.ToInt32(txtCardNumber.Text);
+
+            member.PIN =
+                Convert.ToInt32(txtPIN.Text);
+
+            if (MemberDB.IsMember(member))
+            {
+                if (MemberDB.LogIn(member))
+                {
+                    // open frmLibrary form...
+                }
+            }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

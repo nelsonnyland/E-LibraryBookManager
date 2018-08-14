@@ -71,7 +71,7 @@
     <Compile Include="frmSignIn.Designer.cs">
       <DependentUpon>frmSignIn.cs</DependentUpon>
     </Compile>
-    <Compile Include="LibraryContext.cs" />
+    <Compile Include="DBClasses\LibraryContext.cs" />
     <Compile Include="DBClasses\LibraryDB.cs" />
     <Compile Include="ObjClasses\Member.cs" />
     <Compile Include="DBClasses\MemberDB.cs" />

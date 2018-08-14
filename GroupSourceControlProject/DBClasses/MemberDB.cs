@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GroupSourceControlProject
 {
-    static class MemberDB
+    public static class MemberDB
     {
         public static void AddMember(Member m)
         {
@@ -54,12 +54,17 @@ namespace GroupSourceControlProject
             throw new NotImplementedException();
         }
 
+        public static Member CurrentMember()
+        {
+
+        }
+
         public static bool HasBooks(Member member)
         {
             throw new NotImplementedException();
         }
 
-        public static List<Book> GetChecked(Member member)
+        public static List<Book> GetAllMembersBooks(Member member)
         {
             throw new NotImplementedException();
         }

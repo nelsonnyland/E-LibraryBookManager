@@ -16,5 +16,13 @@ namespace GroupSourceControlProject
         {
             InitializeComponent();
         }
+
+        private void frmLibrary_Load(object sender, EventArgs e)
+        {
+            Member member = 
+
+            List<Book> checkedBooks 
+                = MemberDB.GetAllMembersBooks();
+        }
     }
 }
