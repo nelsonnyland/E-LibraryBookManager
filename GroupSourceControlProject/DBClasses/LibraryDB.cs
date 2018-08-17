@@ -9,60 +9,59 @@ namespace GroupSourceControlProject
 {
     public static class LibraryDB
     {
-        public static void AddBook(Book b) //AddBookToDB?
+        /// <summary>
+        /// Adds books to Member's checked-out list.
+        /// </summary>
+        /// <param name="books"></param>
+        public static void CheckoutBooks(List<Book> books)
         {
-            // Add book to Member list VS Add Book to DB???
-            // This currently adds book to DB
-            var context = new LibraryContext();
-
-            context.Books.Add(b);
-
-            context.SaveChanges();
+            // Add book to Member's Book List
+            // Change Book checked-out property
         }
 
-        public static void UpdateBook(Book b) //UpdateBookStatus?
+        /// <summary>
+        /// Removes books from member's checked-out List.
+        /// </summary>
+        /// <param name="books"></param>
+        public static void CheckInBooks(List<Book> books)
         {
-            // User functionality VS Admin functionality???
-            var context = new LibraryContext();
-
-            Book originalBook = context.Books.Find(b.BookID);
-
-            originalBook.CheckedOut = b.CheckedOut;
-
-            context.SaveChanges();
+            // Remove Book from Member's Book List
+            // Change Book checked-out property
         }
 
-        public static void DeleteBook(Book b) //DeleteBookFromDB?
-        {
-            // Currently: Deletes Book from DB
-            // Maybe Delete Book from Member's checked out books?
-            var context = new LibraryContext();
-
-            context.Books.Add(b);
-
-            context.Entry(b).State = EntityState.Deleted;
-
-            context.SaveChanges();
-        }
-
-        public static List<Book> GetAllBooks()
+        /// <summary>
+        /// Gets all books from the Library that are not
+        /// checked out.
+        /// </summary>
+        /// <returns></returns>
+        public static List<Book> GetAllUncheckedBooks()
         {            
-            throw new NotImplementedException();
+            LibraryContext context = new LibraryContext();
+
+            List<Book> allBooks =
+                (from b in context.Books
+                 select b).ToList();
+
+            List<Book> uncheckedBooks = new List<Book>();
+
+            foreach (Book book in allBooks)
+            {
+                if (book.CheckedOut == false)
+                    uncheckedBooks.Add(book);
+            }
+
+            return uncheckedBooks;
         }
 
-        public static bool IsChecked(Book book)
+        /// <summary>
+        /// Returns a boolean value that cooresponds to
+        /// whether or not the book is checked-out.
+        /// </summary>
+        /// <param name="book"></param>
+        /// <returns></returns>
+        public static bool IsBookCheckedOut(Book book)
         {
-            throw new NotImplementedException();
-        }
-
-        public static bool CheckOut(Book book)
-        {
-            throw new NotImplementedException();
-        }
-
-        public static bool CheckIn(Book book)
-        {
-            throw new NotImplementedException();
+            // return checked/checked-out status of book 
         }
     }
 }

@@ -18,11 +18,11 @@ namespace GroupSourceControlProject
 
         public string FirstName { get; set; }
 
-        public List<string> Books { get; set; }
+        public List<string> BooksChecked { get; set; }
 
-        public List<string> GetBooks()
+        public List<string> GetBooksChecked()
         {
-            return Books;
+            return BooksChecked;
         }
     }
 }
