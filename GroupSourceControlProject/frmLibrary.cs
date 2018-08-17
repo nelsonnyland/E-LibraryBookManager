@@ -19,10 +19,20 @@ namespace GroupSourceControlProject
 
         private void frmLibrary_Load(object sender, EventArgs e)
         {
+            // load checked-out books
             Member member = MemberDB.GetCurrentMember();
 
-            List<Book> checkedBooks 
-                = MemberDB.GetAllMembersBooks(member);
+            List<Book> checkedBooks =
+                MemberDB.GetAllMembersBooks(member);
+
+            // load books available to check out
+            List<Book> uncheckedBooks =
+                LibraryDB.GetAllUncheckedBooks();
+
+            foreach (Book b in uncheckedBooks)
+            {
+                cboBooksAvail.Items.Add(b.Title);
+            }
         }
     }
 }
