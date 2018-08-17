@@ -63,7 +63,7 @@ namespace GroupSourceControlProject
 
         public static bool LogIn(Member member)
         {
-            // log-in member
+            throw new NotImplementedException();
         }
 
         public static bool HasBooks(Member member)
