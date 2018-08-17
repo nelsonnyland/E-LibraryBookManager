@@ -64,6 +64,10 @@
     <Compile Include="Migrations\201808012059010_AddedBooksAndMembers.Designer.cs">
       <DependentUpon>201808012059010_AddedBooksAndMembers.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808170032498_DataUpdate.cs" />
+    <Compile Include="Migrations\201808170032498_DataUpdate.Designer.cs">
+      <DependentUpon>201808170032498_DataUpdate.cs</DependentUpon>
+    </Compile>
     <Compile Include="ObjClasses\Book.cs" />
     <Compile Include="frmSignIn.cs">
       <SubType>Form</SubType>
@@ -86,6 +90,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808012059010_AddedBooksAndMembers.resx">
       <DependentUpon>201808012059010_AddedBooksAndMembers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808170032498_DataUpdate.resx">
+      <DependentUpon>201808170032498_DataUpdate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
