@@ -10,14 +10,14 @@ using System.Windows.Forms;
 
 namespace GroupSourceControlProject
 {
-    public partial class frmLibrary : Form
+    public partial class FrmLibrary : Form
     {
-        public frmLibrary()
+        public FrmLibrary()
         {
             InitializeComponent();
         }
 
-        private void frmLibrary_Load(object sender, EventArgs e)
+        private void FrmLibrary_Load(object sender, EventArgs e)
         {
             // load checked-out books
             Member member = MemberDB.GetCurrentMember();

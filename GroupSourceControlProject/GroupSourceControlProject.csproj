@@ -54,11 +54,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="frmLibrary.cs">
+    <Compile Include="Forms\FrmLibrary.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmLibrary.Designer.cs">
-      <DependentUpon>frmLibrary.cs</DependentUpon>
+    <Compile Include="Forms\FrmLibrary.Designer.cs">
+      <DependentUpon>FrmLibrary.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201808012059010_AddedBooksAndMembers.cs" />
     <Compile Include="Migrations\201808012059010_AddedBooksAndMembers.Designer.cs">
@@ -69,11 +69,11 @@
       <DependentUpon>201808170032498_DataUpdate.cs</DependentUpon>
     </Compile>
     <Compile Include="ObjClasses\Book.cs" />
-    <Compile Include="frmSignIn.cs">
+    <Compile Include="Forms\FrmSignIn.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmSignIn.Designer.cs">
-      <DependentUpon>frmSignIn.cs</DependentUpon>
+    <Compile Include="Forms\FrmSignIn.Designer.cs">
+      <DependentUpon>FrmSignIn.cs</DependentUpon>
     </Compile>
     <Compile Include="DBClasses\LibraryContext.cs" />
     <Compile Include="DBClasses\LibraryDB.cs" />
@@ -82,11 +82,11 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="frmLibrary.resx">
-      <DependentUpon>frmLibrary.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FrmLibrary.resx">
+      <DependentUpon>FrmLibrary.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmSignIn.resx">
-      <DependentUpon>frmSignIn.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FrmSignIn.resx">
+      <DependentUpon>FrmSignIn.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808012059010_AddedBooksAndMembers.resx">
       <DependentUpon>201808012059010_AddedBooksAndMembers.cs</DependentUpon>
