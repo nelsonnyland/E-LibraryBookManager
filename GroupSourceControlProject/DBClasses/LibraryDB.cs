@@ -67,7 +67,7 @@ namespace GroupSourceControlProject
 
             foreach (Book book in allBooks)
             {
-                if (book.CheckedOut == false)
+                if (book.CheckedOut is false)
                     uncheckedBooks.Add(book);
             }
 
