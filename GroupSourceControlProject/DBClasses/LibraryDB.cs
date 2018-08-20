@@ -16,7 +16,14 @@ namespace GroupSourceControlProject
         public static void CheckoutBooks(List<Book> books)
         {
             // Add book to Member's Book List
+            Member currentMember = MemberDB.GetCurrentMember();
+            currentMember.AddCheckedBooks(books);
+
             // Change Book checked-out property
+            foreach (Book book in books)
+            {
+                book.CheckedOut = true;
+            }
         }
 
         /// <summary>
@@ -26,7 +33,21 @@ namespace GroupSourceControlProject
         public static void CheckInBooks(List<Book> books)
         {
             // Remove Book from Member's Book List
+            Member currentMember = MemberDB.GetCurrentMember();
+
+            List<Book> checkedBooks = 
+                currentMember.GetCheckedBooks();
+
+            foreach (Book book in books)
+            {
+                checkedBooks.Remove(book);
+            }
+
             // Change Book checked-out property
+            foreach (Book book in books)
+            {
+                book.CheckedOut = false;
+            }
         }
 
         /// <summary>
@@ -62,6 +83,7 @@ namespace GroupSourceControlProject
         public static bool IsBookCheckedOut(Book book)
         {
             // return checked/checked-out status of book 
+            return book.CheckedOut;
         }
     }
 }

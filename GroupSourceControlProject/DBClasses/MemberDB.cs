@@ -9,6 +9,7 @@ namespace GroupSourceControlProject
 {
     public static class MemberDB
     {
+        // allows for current member access
         private static Member CurrentMember { get; set; }
 
         public static Member GetCurrentMember()
@@ -16,6 +17,7 @@ namespace GroupSourceControlProject
             return CurrentMember;
         }
 
+        // changes current member
         public static void SetCurrentMember(Member member)
         {
             CurrentMember = member;
@@ -40,7 +42,7 @@ namespace GroupSourceControlProject
             // Update Member's info
             originalMember.FirstName = m.FirstName;
             originalMember.LastName = m.LastName;
-            originalMember.BooksChecked = m.BooksChecked;
+            // books checked
 
             // Save Changes
             context.SaveChanges();

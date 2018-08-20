@@ -10,14 +10,14 @@ using System.Windows.Forms;
 
 namespace GroupSourceControlProject
 {
-    public partial class frmSignIn : Form
+    public partial class FrmSignIn : Form
     {
-        public frmSignIn()
+        public FrmSignIn()
         {
             InitializeComponent();
         }
 
-        private void btnSignIn_Click(object sender, EventArgs e)
+        private void BtnSignIn_Click(object sender, EventArgs e)
         {
             Member member = new Member();
 
@@ -31,12 +31,14 @@ namespace GroupSourceControlProject
             {
                 if (MemberDB.LogIn(member))
                 {
-                    // open frmLibrary form...
+                    // if member open library form
+                    FrmLibrary addLibraryForm = new FrmLibrary();
+                    addLibraryForm.ShowDialog();
                 }
             }
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)
+        private void BtnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
         }
