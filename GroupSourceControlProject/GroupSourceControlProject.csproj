@@ -64,6 +64,10 @@
     <Compile Include="Migrations\201808202236446_DBStart.Designer.cs">
       <DependentUpon>201808202236446_DBStart.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808210030482_DBUpdate.cs" />
+    <Compile Include="Migrations\201808210030482_DBUpdate.Designer.cs">
+      <DependentUpon>201808210030482_DBUpdate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ObjClasses\Book.cs" />
     <Compile Include="Forms\FrmSignIn.cs">
@@ -86,6 +90,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808202236446_DBStart.resx">
       <DependentUpon>201808202236446_DBStart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808210030482_DBUpdate.resx">
+      <DependentUpon>201808210030482_DBUpdate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

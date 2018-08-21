@@ -23,16 +23,44 @@ namespace GroupSourceControlProject
             CurrentMember = member;
         }
 
+        /// <summary>
+        /// Verifies if a library member, if so
+        /// returns true.
+        /// </summary>
+        /// <param name="member"></param>
+        /// <returns>bool verification result</returns>
         public static bool IsMember(Member member)
         {
-            throw new NotImplementedException();
+            LibraryContext context = new LibraryContext();
+
+            List<Member> allMembers =
+                (from m in context.Members
+                 select m).ToList();
+
+            foreach (Member item in allMembers)
+            {
+                if ((item.CardNumber == member.CardNumber) &&
+                    (item.PIN == member.PIN))
+                    return true;
+            }
+
+            return false;
         }
 
-        public static bool LogIn(Member member)
+        /// <summary>
+        /// Logs user in if passes verification.
+        /// </summary>
+        /// <param name="member"></param>
+        public static void LogIn(Member member)
         {
-            throw new NotImplementedException();
+            SetCurrentMember(member);
         }
 
+        /// <summary>
+        /// Checks if Member has books checked out.
+        /// </summary>
+        /// <param name="member"></param>
+        /// <returns>bool answer if has books</returns>
         public static bool HasBooks(Member member)
         {
             throw new NotImplementedException();
@@ -45,7 +73,7 @@ namespace GroupSourceControlProject
         /// <returns>List of books</returns>
         public static List<Book> GetAllMembersBooks(Member member)
         {
-            throw new NotImplementedException();
+            return member.GetCheckedBooks();
         }
     }
 }
