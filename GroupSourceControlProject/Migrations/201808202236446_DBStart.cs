@@ -3,7 +3,7 @@ namespace GroupSourceControlProject.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class AddedBooksAndMembers : DbMigration
+    public partial class DBStart : DbMigration
     {
         public override void Up()
         {
@@ -12,10 +12,12 @@ namespace GroupSourceControlProject.Migrations
                 c => new
                     {
                         BookID = c.Int(nullable: false, identity: true),
+                        ISBN = c.String(),
                         Title = c.String(),
                         Author = c.String(),
                         PubDate = c.Int(nullable: false),
                         CheckedOut = c.Boolean(nullable: false),
+                        Category = c.String(),
                     })
                 .PrimaryKey(t => t.BookID);
             
@@ -23,11 +25,13 @@ namespace GroupSourceControlProject.Migrations
                 "dbo.Members",
                 c => new
                     {
-                        CardNumber = c.Int(nullable: false, identity: true),
+                        MemberID = c.Int(nullable: false, identity: true),
+                        CardNumber = c.Int(nullable: false),
+                        PIN = c.Int(nullable: false),
                         LastName = c.String(),
                         FirstName = c.String(),
                     })
-                .PrimaryKey(t => t.CardNumber);
+                .PrimaryKey(t => t.MemberID);
             
         }
         

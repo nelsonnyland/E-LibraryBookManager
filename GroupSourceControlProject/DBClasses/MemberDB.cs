@@ -23,51 +23,44 @@ namespace GroupSourceControlProject
             CurrentMember = member;
         }
 
-        public static void AddMember(Member m)
+        /// <summary>
+        /// Verifies if a library member, if so
+        /// returns true.
+        /// </summary>
+        /// <param name="member"></param>
+        /// <returns>bool verification result</returns>
+        public static bool IsMember(Member member)
         {
             LibraryContext context = new LibraryContext();
 
-            context.Members.Add(m);
+            List<Member> allMembers =
+                (from m in context.Members
+                 select m).ToList();
 
-            context.SaveChanges();
+            foreach (Member item in allMembers)
+            {
+                if ((item.CardNumber == member.CardNumber) &&
+                    (item.PIN == member.PIN))
+                    return true;
+            }
+
+            return false;
         }
 
-        public static void UpdateMember(Member m)
+        /// <summary>
+        /// Logs user in if passes verification.
+        /// </summary>
+        /// <param name="member"></param>
+        public static void LogIn(Member member)
         {
-            var context = new LibraryContext();
-
-            // Find Member's info via their cardnumber
-            Member originalMember = context.Members.Find(m.CardNumber);
-
-            // Update Member's info
-            originalMember.FirstName = m.FirstName;
-            originalMember.LastName = m.LastName;
-            // books checked
-
-            // Save Changes
-            context.SaveChanges();
+            SetCurrentMember(member);
         }
 
-        public static void DeleteMember(Member m)
-        {
-            var context = new LibraryContext();
-            context.Members.Add(m);
-
-            context.Entry(m).State = EntityState.Deleted;
-
-            context.SaveChanges();
-        }
-
-        public static bool IsMember(Member member)
-        {
-            throw new NotImplementedException();
-        }
-
-        public static bool LogIn(Member member)
-        {
-            throw new NotImplementedException();
-        }
-
+        /// <summary>
+        /// Checks if Member has books checked out.
+        /// </summary>
+        /// <param name="member"></param>
+        /// <returns>bool answer if has books</returns>
         public static bool HasBooks(Member member)
         {
             throw new NotImplementedException();
@@ -80,7 +73,7 @@ namespace GroupSourceControlProject
         /// <returns>List of books</returns>
         public static List<Book> GetAllMembersBooks(Member member)
         {
-            throw new NotImplementedException();
+            return member.GetCheckedBooks();
         }
     }
 }

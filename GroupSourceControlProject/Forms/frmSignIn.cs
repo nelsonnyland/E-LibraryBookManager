@@ -29,12 +29,19 @@ namespace GroupSourceControlProject
 
             if (MemberDB.IsMember(member))
             {
-                if (MemberDB.LogIn(member))
-                {
-                    // if member open library form
-                    FrmLibrary addLibraryForm = new FrmLibrary();
-                    addLibraryForm.ShowDialog();
-                }
+                MemberDB.LogIn(member);
+
+                FrmLibrary addLibraryForm = new FrmLibrary();
+
+                addLibraryForm.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Not a library member.", "Error");
+
+                txtCardNumber.Text = string.Empty;
+
+                txtPIN.Text = string.Empty;
             }
         }
 
