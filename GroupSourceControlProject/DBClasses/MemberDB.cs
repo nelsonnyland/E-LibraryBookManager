@@ -9,66 +9,37 @@ namespace GroupSourceControlProject
 {
     public static class MemberDB
     {
-        private static Member CurrentMember { get; set; }
-
-        public static Member GetCurrentMember()
-        {
-            return CurrentMember;
-        }
-
-        public static void SetCurrentMember(Member member)
-        {
-            CurrentMember = member;
-        }
-
-        public static void AddMember(Member m)
+        /// <summary>
+        /// Verifies if a library member, if so
+        /// returns true.
+        /// </summary>
+        /// <param name="member"></param>
+        /// <returns>bool verification result</returns>
+        public static bool IsMember(Member member)
         {
             LibraryContext context = new LibraryContext();
 
-            context.Members.Add(m);
+            List<Member> allMembers =
+                (from m in context.Members
+                 select m).ToList();
 
-            context.SaveChanges();
+            foreach (Member item in allMembers)
+            {
+                if ((item.CardNumber == member.CardNumber) &&
+                    (item.PIN == member.PIN))
+                    return true;
+            }
+
+            return false;
         }
 
-        public static void UpdateMember(Member m)
+        /// <summary>
+        /// Logs user in if verification passes.
+        /// </summary>
+        /// <param name="member"></param>
+        public static void LogIn(Member member)
         {
-            var context = new LibraryContext();
-
-            // Find Member's info via their cardnumber
-            Member originalMember = context.Members.Find(m.CardNumber);
-
-            // Update Member's info
-            originalMember.FirstName = m.FirstName;
-            originalMember.LastName = m.LastName;
-            originalMember.BooksChecked = m.BooksChecked;
-
-            // Save Changes
-            context.SaveChanges();
-        }
-
-        public static void DeleteMember(Member m)
-        {
-            var context = new LibraryContext();
-            context.Members.Add(m);
-
-            context.Entry(m).State = EntityState.Deleted;
-
-            context.SaveChanges();
-        }
-
-        public static bool IsMember(Member member)
-        {
-            throw new NotImplementedException();
-        }
-
-        public static bool LogIn(Member member)
-        {
-            throw new NotImplementedException();
-        }
-
-        public static bool HasBooks(Member member)
-        {
-            throw new NotImplementedException();
+            CurrentMember.SetCurrentMember(member);
         }
 
         /// <summary>
@@ -78,7 +49,27 @@ namespace GroupSourceControlProject
         /// <returns>List of books</returns>
         public static List<Book> GetAllMembersBooks(Member member)
         {
-            throw new NotImplementedException();
+            return member.GetCheckedBooks();
+        }
+    }
+
+    /// <summary>
+    /// CurrentMember class keeps track of who the currently
+    /// logged-in member is. Accessible through public get
+    /// and set methods.
+    /// </summary>
+    public static class CurrentMember
+    {
+        private static Member Current { get; set; }
+
+        public static Member GetCurrentMember()
+        {
+            return Current;
+        }
+
+        public static void SetCurrentMember(Member member)
+        {
+            Current = member;
         }
     }
 }

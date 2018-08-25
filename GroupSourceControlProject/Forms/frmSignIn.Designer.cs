@@ -1,6 +1,6 @@
 ﻿namespace GroupSourceControlProject
 {
-    partial class frmSignIn
+    partial class FrmSignIn
     {
         /// <summary>
         /// Required designer variable.
@@ -76,7 +76,7 @@
             this.btnSignIn.TabIndex = 4;
             this.btnSignIn.Text = "Sign-In";
             this.btnSignIn.UseVisualStyleBackColor = true;
-            this.btnSignIn.Click += new System.EventHandler(this.btnSignIn_Click);
+            this.btnSignIn.Click += new System.EventHandler(this.BtnSignIn_Click);
             // 
             // btnCancel
             // 
@@ -86,9 +86,9 @@
             this.btnCancel.TabIndex = 5;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            this.btnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
             // 
-            // frmSignIn
+            // FrmSignIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -99,7 +99,8 @@
             this.Controls.Add(this.txtPIN);
             this.Controls.Add(this.btnSignIn);
             this.Controls.Add(this.btnCancel);
-            this.Name = "frmSignIn";
+            this.Name = "FrmSignIn";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "E-Library";
             this.ResumeLayout(false);
             this.PerformLayout();

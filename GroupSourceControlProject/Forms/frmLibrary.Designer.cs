@@ -1,6 +1,6 @@
 ﻿namespace GroupSourceControlProject
 {
-    partial class frmLibrary
+    partial class FrmLibrary
     {
         /// <summary>
         /// Required designer variable.
@@ -127,7 +127,7 @@
             this.btnCheckOut.Text = "Check-Out";
             this.btnCheckOut.UseVisualStyleBackColor = true;
             // 
-            // frmLibrary
+            // FrmLibrary
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -142,9 +142,10 @@
             this.Controls.Add(this.chkListBooksSelected);
             this.Controls.Add(this.btnCheckOut);
             this.Controls.Add(this.btnCancel);
-            this.Name = "frmLibrary";
+            this.Name = "FrmLibrary";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmLibrary";
-            this.Load += new System.EventHandler(this.frmLibrary_Load);
+            this.Load += new System.EventHandler(this.FrmLibrary_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

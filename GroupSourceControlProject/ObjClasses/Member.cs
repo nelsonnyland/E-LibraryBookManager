@@ -10,6 +10,8 @@ namespace GroupSourceControlProject
     public class Member
     {
         [Key]
+        public int MemberID { get; set; }
+
         public int CardNumber { get; set; }
 
         public int PIN { get; set; }
@@ -18,11 +20,16 @@ namespace GroupSourceControlProject
 
         public string FirstName { get; set; }
 
-        public List<string> BooksChecked { get; set; }
+        private List<Book> BooksChecked { get; set; }
 
-        public List<string> GetBooksChecked()
+        public List<Book> GetCheckedBooks()
         {
             return BooksChecked;
+        }
+
+        public void AddCheckedBooks(List<Book> books)
+        {
+            BooksChecked.AddRange(books);            
         }
     }
 }

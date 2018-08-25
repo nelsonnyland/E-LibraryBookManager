@@ -7,13 +7,13 @@ namespace GroupSourceControlProject.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class DataUpdate : IMigrationMetadata
+    public sealed partial class DBStart : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(DataUpdate));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(DBStart));
         
         string IMigrationMetadata.Id
         {
-            get { return "201808170032498_DataUpdate"; }
+            get { return "201808202236446_DBStart"; }
         }
         
         string IMigrationMetadata.Source
