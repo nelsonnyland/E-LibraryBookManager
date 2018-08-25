@@ -34,7 +34,7 @@ namespace GroupSourceControlProject
         }
 
         /// <summary>
-        /// Logs user in if passes verification.
+        /// Logs user in if verification passes.
         /// </summary>
         /// <param name="member"></param>
         public static void LogIn(Member member)
@@ -53,6 +53,11 @@ namespace GroupSourceControlProject
         }
     }
 
+    /// <summary>
+    /// CurrentMember class keeps track of who the currently
+    /// logged-in member is. Accessible through public get
+    /// and set methods.
+    /// </summary>
     public static class CurrentMember
     {
         private static Member Current { get; set; }
