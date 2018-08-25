@@ -20,6 +20,8 @@ namespace GroupSourceControlProject
 
         public string FirstName { get; set; }
 
+        public bool IsAdmin { get; set; }
+
         private List<Book> BooksChecked { get; set; }
 
         public List<Book> GetCheckedBooks()

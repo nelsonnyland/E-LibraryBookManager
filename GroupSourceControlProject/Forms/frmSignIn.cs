@@ -33,6 +33,9 @@ namespace GroupSourceControlProject
 
                 member.FirstName = txtFirstName.Text;
 
+                if (chkAdmin.Checked is true)
+                    member.IsAdmin = true;
+
                 if (MemberDB.IsMember(member))
                 {
                     MessageBox.Show("Already a member. Sign-in below.");
