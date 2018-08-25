@@ -136,10 +136,12 @@ namespace GroupSourceControlProject
 
         private void Clear()
         {
-            foreach (Control c in Controls)
-            {
-                c.Text = string.Empty;
-            }
+            txtUsername2.Text = String.Empty;
+            txtFirstName.Text = String.Empty;
+            txtLastName.Text = String.Empty;
+            txtPIN2.Text = String.Empty;
+            txtUsername.Text = String.Empty;
+            txtPIN.Text = String.Empty;
         }
     }
 }
