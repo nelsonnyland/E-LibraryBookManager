@@ -7,20 +7,60 @@ using System.Threading.Tasks;
 
 namespace GroupSourceControlProject
 {
+    /// <summary>
+    /// The MemberDB class communicates with the database and
+    /// handles current logged-in member as well as registration
+    /// log-in and some Member class methods.
+    /// </summary>
     public static class MemberDB
     {
-        public static void Register(Member member)
+        /// <summary>
+        /// Adds a member to the database.
+        /// </summary>
+        /// <param name="member"></param>
+        public static bool Register(Member member)
         {
+            LibraryContext context = new LibraryContext();
 
+            context.Members.Add(member);
+
+            context.SaveChanges();
+
+            if (IsMember(member))
+                return true;
+            else
+                return false;
+        }
+
+        private static void LogIn(Member member)
+        {
+            CurrentMember.SetCurrentMember(member);
         }
 
         /// <summary>
-        /// Logs user in if verification passes.
+        /// Logs user in if verification passes and sets current
+        /// member to user.
         /// </summary>
         /// <param name="member"></param>
-        public static void LogIn(Member member)
+        public static bool Validate(Member member)
         {
-            CurrentMember.SetCurrentMember(member);
+            LibraryContext context = new LibraryContext();
+
+            List<Member> allMembers =
+                (from m in context.Members
+                 select m).ToList();
+
+            foreach (Member item in allMembers)
+            {
+                if ((item.Username == member.Username) 
+                    && (item.PIN == member.PIN))
+                {
+                    LogIn(member);
+                    return true;
+                }
+            }
+
+            return false;
         }
         
         /// <summary>
@@ -39,8 +79,7 @@ namespace GroupSourceControlProject
 
             foreach (Member item in allMembers)
             {
-                if ((item.Username == member.Username) &&
-                    (item.PIN == member.PIN))
+                if (item.Username == member.Username)
                     return true;
             }
 
