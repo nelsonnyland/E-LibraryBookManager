@@ -23,49 +23,123 @@ namespace GroupSourceControlProject
 
             Random random = new Random();
 
-            member.Username = txtUsername2.Text;
+            if (SubmissionCorrect())
+            {
+                member.Username = txtUsername2.Text;
 
-            member.PIN = Convert.ToInt32(txtPIN2.Text);
+                member.PIN = Convert.ToInt32(txtPIN2.Text);
 
-            member.LastName = txtLastName.Text;
+                member.LastName = txtLastName.Text;
 
-            member.FirstName = txtFirstName.Text;
+                member.FirstName = txtFirstName.Text;
 
-            MemberDB.Register(member);
+                if (MemberDB.IsMember(member))
+                {
+                    MessageBox.Show("Already a member. Sign-in below.");
+                }
+                else
+                {
+                    if (MemberDB.Register(member))
+                        MessageBox.Show("Registration successful.");
+                    else
+                        MessageBox.Show("Registration failed. Try again.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Incorrect submission. " +
+                                "Please try again.");
+            }
+
+            Clear();
         }
 
         public void BtnSignIn_Click(object sender, EventArgs e)
         {
             Member member = new Member();
 
-            member.Username = txtUsername.Text;
+            if (!Empty(txtUsername.Text))
+                member.Username = txtUsername.Text;
 
-            member.PIN =
-                Convert.ToInt32(txtPIN.Text);
+            if (!InvalidInt(txtPIN.Text))
+                member.PIN = Convert.ToInt32(txtPIN.Text);
 
             if (MemberDB.IsMember(member))
             {
-                MemberDB.LogIn(member);
+                if (MemberDB.Validate(member))
+                {
+                    this.Hide();
 
-                this.Hide();
+                    FrmLibrary addLibraryForm = new FrmLibrary();
 
-                FrmLibrary addLibraryForm = new FrmLibrary();
+                    addLibraryForm.ShowDialog();
 
-                addLibraryForm.ShowDialog();
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("PIN incorrect. Try again.");
+                }
             }
             else
             {
                 MessageBox.Show("Not a library member.", "Error");
-
-                txtUsername.Text = string.Empty;
-
-                txtPIN.Text = string.Empty;
             }
+
+            Clear();
         }
 
         private void BtnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private static bool InvalidInt(string input)
+        {
+            if (!String.IsNullOrEmpty(input))
+            {
+                if (Int32.TryParse(input, out int test))
+                {
+                    // is valid
+                    return false;
+                }
+            }
+            // is invalid
+            return true;
+        }
+
+        private static bool Empty(string input)
+        {
+            if (String.IsNullOrWhiteSpace(input))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        private bool SubmissionCorrect()
+        {
+            if (Empty(txtUsername2.Text))
+                return false;
+
+            if (InvalidInt(txtPIN2.Text))
+                return false;
+
+            if (Empty(txtUsername2.Text))
+                return false;
+
+            if (Empty(txtUsername2.Text))
+                return false;
+
+            return true;
+        }
+
+        private void Clear()
+        {
+            foreach (Control c in Controls)
+            {
+                c.Text = string.Empty;
+            }
         }
     }
 }
