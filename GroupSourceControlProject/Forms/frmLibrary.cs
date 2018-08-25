@@ -20,7 +20,7 @@ namespace GroupSourceControlProject
         private void FrmLibrary_Load(object sender, EventArgs e)
         {
             // load checked-out books
-            Member member = MemberDB.GetCurrentMember();
+            Member member = CurrentMember.GetCurrentMember();
 
             List<Book> checkedBooks =
                 MemberDB.GetAllMembersBooks(member);

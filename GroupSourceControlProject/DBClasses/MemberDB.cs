@@ -9,20 +9,6 @@ namespace GroupSourceControlProject
 {
     public static class MemberDB
     {
-        // allows for current member access
-        private static Member CurrentMember { get; set; }
-
-        public static Member GetCurrentMember()
-        {
-            return CurrentMember;
-        }
-
-        // changes current member
-        public static void SetCurrentMember(Member member)
-        {
-            CurrentMember = member;
-        }
-
         /// <summary>
         /// Verifies if a library member, if so
         /// returns true.
@@ -48,22 +34,12 @@ namespace GroupSourceControlProject
         }
 
         /// <summary>
-        /// Logs user in if passes verification.
+        /// Logs user in if verification passes.
         /// </summary>
         /// <param name="member"></param>
         public static void LogIn(Member member)
         {
-            SetCurrentMember(member);
-        }
-
-        /// <summary>
-        /// Checks if Member has books checked out.
-        /// </summary>
-        /// <param name="member"></param>
-        /// <returns>bool answer if has books</returns>
-        public static bool HasBooks(Member member)
-        {
-            throw new NotImplementedException();
+            CurrentMember.SetCurrentMember(member);
         }
 
         /// <summary>
@@ -74,6 +50,26 @@ namespace GroupSourceControlProject
         public static List<Book> GetAllMembersBooks(Member member)
         {
             return member.GetCheckedBooks();
+        }
+    }
+
+    /// <summary>
+    /// CurrentMember class keeps track of who the currently
+    /// logged-in member is. Accessible through public get
+    /// and set methods.
+    /// </summary>
+    public static class CurrentMember
+    {
+        private static Member Current { get; set; }
+
+        public static Member GetCurrentMember()
+        {
+            return Current;
+        }
+
+        public static void SetCurrentMember(Member member)
+        {
+            Current = member;
         }
     }
 }

@@ -31,6 +31,8 @@ namespace GroupSourceControlProject
             {
                 MemberDB.LogIn(member);
 
+                this.Hide();
+
                 FrmLibrary addLibraryForm = new FrmLibrary();
 
                 addLibraryForm.ShowDialog();
