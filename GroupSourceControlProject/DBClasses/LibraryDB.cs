@@ -74,6 +74,7 @@ namespace GroupSourceControlProject
             return uncheckedBooks;
         }
 
+
         /// <summary>
         /// Returns a boolean value that cooresponds to
         /// whether or not the book is checked-out.

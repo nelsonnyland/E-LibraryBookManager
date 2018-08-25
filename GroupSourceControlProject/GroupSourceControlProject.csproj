@@ -68,6 +68,10 @@
     <Compile Include="Migrations\201808210030482_DBUpdate.Designer.cs">
       <DependentUpon>201808210030482_DBUpdate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808251426186_DBUpdate2.cs" />
+    <Compile Include="Migrations\201808251426186_DBUpdate2.Designer.cs">
+      <DependentUpon>201808251426186_DBUpdate2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ObjClasses\Book.cs" />
     <Compile Include="Forms\FrmSignIn.cs">
@@ -93,6 +97,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808210030482_DBUpdate.resx">
       <DependentUpon>201808210030482_DBUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808251426186_DBUpdate2.resx">
+      <DependentUpon>201808251426186_DBUpdate2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

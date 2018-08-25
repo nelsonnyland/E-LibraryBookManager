@@ -12,7 +12,7 @@ namespace GroupSourceControlProject
         [Key]
         public int MemberID { get; set; }
 
-        public int CardNumber { get; set; }
+        public string Username { get; set; }
 
         public int PIN { get; set; }
 

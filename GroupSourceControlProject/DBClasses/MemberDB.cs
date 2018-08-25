@@ -9,6 +9,20 @@ namespace GroupSourceControlProject
 {
     public static class MemberDB
     {
+        public static void Register(Member member)
+        {
+
+        }
+
+        /// <summary>
+        /// Logs user in if verification passes.
+        /// </summary>
+        /// <param name="member"></param>
+        public static void LogIn(Member member)
+        {
+            CurrentMember.SetCurrentMember(member);
+        }
+        
         /// <summary>
         /// Verifies if a library member, if so
         /// returns true.
@@ -25,21 +39,12 @@ namespace GroupSourceControlProject
 
             foreach (Member item in allMembers)
             {
-                if ((item.CardNumber == member.CardNumber) &&
+                if ((item.Username == member.Username) &&
                     (item.PIN == member.PIN))
                     return true;
             }
 
             return false;
-        }
-
-        /// <summary>
-        /// Logs user in if verification passes.
-        /// </summary>
-        /// <param name="member"></param>
-        public static void LogIn(Member member)
-        {
-            CurrentMember.SetCurrentMember(member);
         }
 
         /// <summary>

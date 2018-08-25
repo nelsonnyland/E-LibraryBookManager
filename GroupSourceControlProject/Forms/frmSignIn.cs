@@ -17,12 +17,28 @@ namespace GroupSourceControlProject
             InitializeComponent();
         }
 
-        private void BtnSignIn_Click(object sender, EventArgs e)
+        public void BtnSubmit_Click(object sender, EventArgs e)
         {
             Member member = new Member();
 
-            member.CardNumber = 
-                Convert.ToInt32(txtCardNumber.Text);
+            Random random = new Random();
+
+            member.Username = txtUsername2.Text;
+
+            member.PIN = Convert.ToInt32(txtPIN2.Text);
+
+            member.LastName = txtLastName.Text;
+
+            member.FirstName = txtFirstName.Text;
+
+            MemberDB.Register(member);
+        }
+
+        public void BtnSignIn_Click(object sender, EventArgs e)
+        {
+            Member member = new Member();
+
+            member.Username = txtUsername.Text;
 
             member.PIN =
                 Convert.ToInt32(txtPIN.Text);
@@ -41,7 +57,7 @@ namespace GroupSourceControlProject
             {
                 MessageBox.Show("Not a library member.", "Error");
 
-                txtCardNumber.Text = string.Empty;
+                txtUsername.Text = string.Empty;
 
                 txtPIN.Text = string.Empty;
             }
