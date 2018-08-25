@@ -9,20 +9,6 @@ namespace GroupSourceControlProject
 {
     public static class MemberDB
     {
-        // allows for current member access
-        private static Member CurrentMember { get; set; }
-
-        public static Member GetCurrentMember()
-        {
-            return CurrentMember;
-        }
-
-        // changes current member
-        public static void SetCurrentMember(Member member)
-        {
-            CurrentMember = member;
-        }
-
         /// <summary>
         /// Verifies if a library member, if so
         /// returns true.
@@ -53,17 +39,7 @@ namespace GroupSourceControlProject
         /// <param name="member"></param>
         public static void LogIn(Member member)
         {
-            SetCurrentMember(member);
-        }
-
-        /// <summary>
-        /// Checks if Member has books checked out.
-        /// </summary>
-        /// <param name="member"></param>
-        /// <returns>bool answer if has books</returns>
-        public static bool HasBooks(Member member)
-        {
-            throw new NotImplementedException();
+            CurrentMember.SetCurrentMember(member);
         }
 
         /// <summary>
@@ -74,6 +50,21 @@ namespace GroupSourceControlProject
         public static List<Book> GetAllMembersBooks(Member member)
         {
             return member.GetCheckedBooks();
+        }
+    }
+
+    public static class CurrentMember
+    {
+        private static Member Current { get; set; }
+
+        public static Member GetCurrentMember()
+        {
+            return Current;
+        }
+
+        public static void SetCurrentMember(Member member)
+        {
+            Current = member;
         }
     }
 }

@@ -34,6 +34,8 @@ namespace GroupSourceControlProject
                 FrmLibrary addLibraryForm = new FrmLibrary();
 
                 addLibraryForm.ShowDialog();
+
+                this.Close();
             }
             else
             {
