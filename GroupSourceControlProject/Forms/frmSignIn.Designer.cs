@@ -45,6 +45,8 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.chkAdmin = new System.Windows.Forms.CheckBox();
+            this.chkAdmin2 = new System.Windows.Forms.CheckBox();
             this.grpSignIn.SuspendLayout();
             this.grpRegister.SuspendLayout();
             this.SuspendLayout();
@@ -105,6 +107,7 @@
             // 
             // grpSignIn
             // 
+            this.grpSignIn.Controls.Add(this.chkAdmin2);
             this.grpSignIn.Controls.Add(this.txtUsername);
             this.grpSignIn.Controls.Add(this.txtPIN);
             this.grpSignIn.Controls.Add(this.btnCancel);
@@ -120,6 +123,7 @@
             // 
             // grpRegister
             // 
+            this.grpRegister.Controls.Add(this.chkAdmin);
             this.grpRegister.Controls.Add(this.txtUsername2);
             this.grpRegister.Controls.Add(this.txtFirstName);
             this.grpRegister.Controls.Add(this.txtLastName);
@@ -211,6 +215,26 @@
             this.label4.TabIndex = 1;
             this.label4.Text = "Last Name";
             // 
+            // chkAdmin
+            // 
+            this.chkAdmin.AutoSize = true;
+            this.chkAdmin.Location = new System.Drawing.Point(22, 184);
+            this.chkAdmin.Name = "chkAdmin";
+            this.chkAdmin.Size = new System.Drawing.Size(86, 17);
+            this.chkAdmin.TabIndex = 12;
+            this.chkAdmin.Text = "Administrator";
+            this.chkAdmin.UseVisualStyleBackColor = true;
+            // 
+            // chkAdmin2
+            // 
+            this.chkAdmin2.AutoSize = true;
+            this.chkAdmin2.Location = new System.Drawing.Point(22, 113);
+            this.chkAdmin2.Name = "chkAdmin2";
+            this.chkAdmin2.Size = new System.Drawing.Size(86, 17);
+            this.chkAdmin2.TabIndex = 13;
+            this.chkAdmin2.Text = "Administrator";
+            this.chkAdmin2.UseVisualStyleBackColor = true;
+            // 
             // FrmSignIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -249,6 +273,8 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtUsername2;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.CheckBox chkAdmin;
+        private System.Windows.Forms.CheckBox chkAdmin2;
     }
 }
 

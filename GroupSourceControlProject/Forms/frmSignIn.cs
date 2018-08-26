@@ -33,6 +33,9 @@ namespace GroupSourceControlProject
 
                 member.FirstName = txtFirstName.Text;
 
+                if (chkAdmin.Checked is true)
+                    member.IsAdmin = true;
+
                 if (MemberDB.IsMember(member))
                 {
                     MessageBox.Show("Already a member. Sign-in below.");
@@ -136,10 +139,12 @@ namespace GroupSourceControlProject
 
         private void Clear()
         {
-            foreach (Control c in Controls)
-            {
-                c.Text = string.Empty;
-            }
+            txtUsername2.Text = String.Empty;
+            txtFirstName.Text = String.Empty;
+            txtLastName.Text = String.Empty;
+            txtPIN2.Text = String.Empty;
+            txtUsername.Text = String.Empty;
+            txtPIN.Text = String.Empty;
         }
     }
 }

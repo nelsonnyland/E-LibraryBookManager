@@ -33,11 +33,11 @@
             this.btnCheckIn = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.chkListBooksSelected = new System.Windows.Forms.CheckedListBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.cboBooksAvail = new System.Windows.Forms.ComboBox();
             this.btnCheckOut = new System.Windows.Forms.Button();
+            this.lstSelectedBooks = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // label1
@@ -65,6 +65,7 @@
             this.btnCheckIn.TabIndex = 3;
             this.btnCheckIn.Text = "Check-In";
             this.btnCheckIn.UseVisualStyleBackColor = true;
+            this.btnCheckIn.Click += new System.EventHandler(this.BtnCheckIn_Click);
             // 
             // btnAdd
             // 
@@ -74,6 +75,7 @@
             this.btnAdd.TabIndex = 4;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
             // 
             // btnCancel
             // 
@@ -83,14 +85,7 @@
             this.btnCancel.TabIndex = 5;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
-            // 
-            // chkListBooksSelected
-            // 
-            this.chkListBooksSelected.FormattingEnabled = true;
-            this.chkListBooksSelected.Location = new System.Drawing.Point(36, 297);
-            this.chkListBooksSelected.Name = "chkListBooksSelected";
-            this.chkListBooksSelected.Size = new System.Drawing.Size(383, 109);
-            this.chkListBooksSelected.TabIndex = 6;
+            this.btnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
             // 
             // label2
             // 
@@ -126,12 +121,22 @@
             this.btnCheckOut.TabIndex = 10;
             this.btnCheckOut.Text = "Check-Out";
             this.btnCheckOut.UseVisualStyleBackColor = true;
+            this.btnCheckOut.Click += new System.EventHandler(this.BtnCheckOut_Click);
+            // 
+            // lstSelectedBooks
+            // 
+            this.lstSelectedBooks.FormattingEnabled = true;
+            this.lstSelectedBooks.Location = new System.Drawing.Point(36, 297);
+            this.lstSelectedBooks.Name = "lstSelectedBooks";
+            this.lstSelectedBooks.Size = new System.Drawing.Size(383, 108);
+            this.lstSelectedBooks.TabIndex = 11;
             // 
             // FrmLibrary
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(552, 449);
+            this.Controls.Add(this.lstSelectedBooks);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.chkListCheckedOut);
             this.Controls.Add(this.btnCheckIn);
@@ -139,7 +144,6 @@
             this.Controls.Add(this.cboBooksAvail);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.chkListBooksSelected);
             this.Controls.Add(this.btnCheckOut);
             this.Controls.Add(this.btnCancel);
             this.Name = "FrmLibrary";
@@ -158,10 +162,10 @@
         private System.Windows.Forms.Button btnCheckIn;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.CheckedListBox chkListBooksSelected;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cboBooksAvail;
         private System.Windows.Forms.Button btnCheckOut;
+        private System.Windows.Forms.ListBox lstSelectedBooks;
     }
 }

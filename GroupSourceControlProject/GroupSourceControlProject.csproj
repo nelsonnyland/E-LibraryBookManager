@@ -54,6 +54,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\FrmAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmAdmin.Designer.cs">
+      <DependentUpon>FrmAdmin.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FrmLibrary.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,6 +78,14 @@
     <Compile Include="Migrations\201808251426186_DBUpdate2.Designer.cs">
       <DependentUpon>201808251426186_DBUpdate2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808252021248_MemberUpdate.cs" />
+    <Compile Include="Migrations\201808252021248_MemberUpdate.Designer.cs">
+      <DependentUpon>201808252021248_MemberUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808260200385_FormUpdate.cs" />
+    <Compile Include="Migrations\201808260200385_FormUpdate.Designer.cs">
+      <DependentUpon>201808260200385_FormUpdate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ObjClasses\Book.cs" />
     <Compile Include="Forms\FrmSignIn.cs">
@@ -86,6 +100,9 @@
     <Compile Include="DBClasses\MemberDB.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\FrmAdmin.resx">
+      <DependentUpon>FrmAdmin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmLibrary.resx">
       <DependentUpon>FrmLibrary.cs</DependentUpon>
     </EmbeddedResource>
@@ -100,6 +117,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808251426186_DBUpdate2.resx">
       <DependentUpon>201808251426186_DBUpdate2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808252021248_MemberUpdate.resx">
+      <DependentUpon>201808252021248_MemberUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808260200385_FormUpdate.resx">
+      <DependentUpon>201808260200385_FormUpdate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

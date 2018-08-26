@@ -26,10 +26,7 @@ namespace GroupSourceControlProject
 
             context.SaveChanges();
 
-            if (IsMember(member))
-                return true;
-            else
-                return false;
+            return IsMember(member);
         }
 
         private static void LogIn(Member member)
@@ -87,13 +84,26 @@ namespace GroupSourceControlProject
         }
 
         /// <summary>
-        /// Gets all books checked out by user.
+        /// Gets all books checked out by member.
         /// </summary>
-        /// <param name="member"></param>
-        /// <returns>List of books</returns>
-        public static List<Book> GetAllMembersBooks(Member member)
+        /// <param name="member">Member</param>
+        /// <returns>List<Book></returns>
+        public static List<Book> GetMemberBooks()
         {
-            return member.GetCheckedBooks();
+            Member member = CurrentMember.GetCurrentMember();
+
+            return member.BooksChecked;
+        }
+
+        /// <summary>
+        /// Sets all books checked out by member.
+        /// </summary>
+        /// <param name="books">List<Book></param>
+        public static void SetMemberBooks(List<Book> books)
+        {
+            Member member = CurrentMember.GetCurrentMember();
+
+            member.BooksChecked = books;
         }
     }
 
