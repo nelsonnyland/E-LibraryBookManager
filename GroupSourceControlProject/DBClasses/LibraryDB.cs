@@ -13,15 +13,20 @@ namespace GroupSourceControlProject
         /// Adds books to Member's checked-out list.
         /// </summary>
         /// <param name="books"></param>
-        public static void CheckoutBooks(List<Book> books)
+        public static bool CheckoutBooks(List<Book> books)
         {
-            Member currentMember = CurrentMember.GetCurrentMember();
-            currentMember.AddCheckedBooks(books);
+            List<Book> memberBooks = 
+                MemberDB.GetMemberBooks();
 
             foreach (Book book in books)
             {
+                memberBooks.Add(book);
                 book.CheckedOut = true;
             }
+
+            MemberDB.SetMemberBooks(memberBooks);
+
+            return IsChecked(books);
         }
 
         /// <summary>
@@ -30,20 +35,16 @@ namespace GroupSourceControlProject
         /// <param name="books"></param>
         public static void CheckInBooks(List<Book> books)
         {
-            Member currentMember = CurrentMember.GetCurrentMember();
-
-            List<Book> checkedBooks = 
-                currentMember.GetCheckedBooks();
+            List<Book> memberBooks =
+                MemberDB.GetMemberBooks();
 
             foreach (Book book in books)
             {
-                checkedBooks.Remove(book);
-            }
-
-            foreach (Book book in books)
-            {
+                memberBooks.Remove(book);
                 book.CheckedOut = false;
             }
+
+            MemberDB.SetMemberBooks(memberBooks);
         }
 
         /// <summary>
@@ -70,16 +71,21 @@ namespace GroupSourceControlProject
             return uncheckedBooks;
         }
 
-
         /// <summary>
-        /// Returns a boolean value that cooresponds to
-        /// whether or not the book is checked-out.
+        /// Returns whether or not books are checked-out.
         /// </summary>
-        /// <param name="book"></param>
-        /// <returns></returns>
-        public static bool IsBookCheckedOut(Book book)
+        /// <returns>bool</returns>
+        public static bool IsChecked(List<Book> books)
         {
-            return book.CheckedOut;
+            List<Book> uncheckedBooks = GetAllUncheckedBooks();
+
+            foreach (Book b in books)
+            {
+                if (uncheckedBooks.Contains(b))
+                    return false;
+            }
+
+            return true;
         }
     }
 }

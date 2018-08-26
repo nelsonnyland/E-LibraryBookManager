@@ -82,6 +82,10 @@
     <Compile Include="Migrations\201808252021248_MemberUpdate.Designer.cs">
       <DependentUpon>201808252021248_MemberUpdate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808260200385_FormUpdate.cs" />
+    <Compile Include="Migrations\201808260200385_FormUpdate.Designer.cs">
+      <DependentUpon>201808260200385_FormUpdate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ObjClasses\Book.cs" />
     <Compile Include="Forms\FrmSignIn.cs">
@@ -116,6 +120,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808252021248_MemberUpdate.resx">
       <DependentUpon>201808252021248_MemberUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808260200385_FormUpdate.resx">
+      <DependentUpon>201808260200385_FormUpdate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
