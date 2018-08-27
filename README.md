@@ -13,5 +13,4 @@ CRUD functionality by the due date that is okay as long as your team is working.
 * Tasks should be split into separate issues and the team should determine how to split up the work.
 * While working, each member should work in their own branch. Once an issue is completed, the team 
   members branch can be merged into the master.
-
-### Keep track of your time as I will want a recap of how you spent your time on the project. ###
+* Keep track of your time as I will want a recap of how you spent your time on the project. 
