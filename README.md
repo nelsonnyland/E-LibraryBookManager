@@ -1,16 +1,50 @@
-# GroupSourceControlProject
+# LibraryDB 
+## A Library Kiosk Application
+### Collaborators: Nelson Nyland, Krista Betcher
 
-https://cptc.instructure.com/courses/1633843/assignments/13000059?module_item_id=29326179
 
-Your task for this assignment will be to create a data-driven project and implement CRUD functionality 
-for an entity. This can also be used as a start for the team project. If you do not finish the entire 
-CRUD functionality by the due date that is okay as long as your team is working. 
+------------------------------------------------
+#### Registration & Sign-in:
+When you open the application you are greeted by a registration and sign-in dialog. 
+There is also an alternate Administrator checkbox for use in editing the database.
 
-**You will be split into teams:**
+*Registration*
 
-* One team member should create a GitHub repo and add the other team member(s) as a contributor.
-* One team member should start the project and commit the initial project to the repo.
-* Tasks should be split into separate issues and the team should determine how to split up the work.
-* While working, each member should work in their own branch. Once an issue is completed, the team 
-  members branch can be merged into the master.
-* Keep track of your time as I will want a recap of how you spent your time on the project. 
+> Username
+
+> First Name
+
+> Last Name
+
+> PIN
+
+*Sign-in*
+
+> Username
+
+> PIN
+
+
+---------------------------------------------------
+#### Library Services:
+When you are signed-in to the application, a new dialog opens up with a listbox for books that have been checked-out, a drop-down box filled with books available, and a listbox for books selected to check-out. Buttons for checking-in, adding to check-out pile, and checking-out are available.
+
+*Checked-Out Books*
+
+> Check-in
+
+*Books Available*
+
+> Add (to selected books to be checked-out)
+
+*Books Selected*
+
+> Check-Out
+
+
+-----------------------------------------------------
+#### Administrator Services:
+
+`[In Development]`
+
+There are administrator services for accessing the library database for editing member and book information. CRUD functionality is accessed by checking the box for administrator when signing-in.
