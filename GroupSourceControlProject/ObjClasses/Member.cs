@@ -22,6 +22,7 @@ namespace GroupSourceControlProject
 
         public bool IsAdmin { get; set; }
 
-        public List<Book> BooksChecked { get; set; }
+        public List<Book> BooksChecked { get; set; } = 
+           new List<Book>();
     }
 }

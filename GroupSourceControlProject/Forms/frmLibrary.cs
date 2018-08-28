@@ -19,27 +19,65 @@ namespace GroupSourceControlProject
 
         private void FrmLibrary_Load(object sender, EventArgs e)
         {
-            ReloadPage();
+            LoadBoxes();
         }
 
+        private void LoadBoxes()
+        {
+            chkListCheckedOut.Items.Clear();
+            
+            List<Book> checkedBooks =
+                MemberDB.GetMemberBooks();
+
+            if (checkedBooks != null)
+            {
+                foreach (Book b in checkedBooks)
+                {
+                    chkListCheckedOut.Items.Add($"{b.BookID}, " +
+                                                $"{b.Title},  " +
+                                                $"{b.Author},  " +
+                                                $"{b.PubDate},  " +
+                                                $"{b.Category}");
+                }
+            }
+
+            cboBooksAvail.Items.Clear();
+
+            List<Book> uncheckedBooks =
+                LibraryDB.GetAllUncheckedBooks();
+
+            if (uncheckedBooks != null)
+            {
+                foreach (Book b in uncheckedBooks)
+                {
+                    cboBooksAvail.Items.Add($"{b.BookID}, " +
+                                            $"{b.Title},  " +
+                                            $"{b.Author},  " +
+                                            $"{b.PubDate},  " +
+                                            $"{b.Category}");
+                }
+            }
+
+            lstSelectedBooks.Items.Clear();
+        }
+
+        // TODO: Handle selected listbox item 
         private void BtnCheckIn_Click(object sender, EventArgs e)
         {
-            List<Book> books = MemberDB.GetMemberBooks();
+            List<Book> memberBooks = MemberDB.GetMemberBooks();
             
-            if (books != null)
+            if (memberBooks != null)
             {
-                var checkedItems = chkListCheckedOut.CheckedItems;
+                var selectedItems = chkListCheckedOut.SelectedItems;
 
-                List<Book> selected = new List<Book>();
+                List<Book> selectedBooks = GetSelectedBooks(
+                    selectedItems, memberBooks);
 
-                foreach (Book b in books)
-                {
-                    // suspect code //
-                    if (checkedItems.Contains(b))
-                        selected.Add(b);
-                }
+                LibraryDB.CheckInBooks(selectedBooks);
 
-                LibraryDB.CheckInBooks(selected);
+                MessageBox.Show("Check-In Successful.");
+
+                LoadBoxes();
             }
             else
             {
@@ -57,34 +95,24 @@ namespace GroupSourceControlProject
                 MessageBox.Show("Please select an item.");
         }
 
+        // TODO: Handle selected item as a string
         private void BtnCheckOut_Click(object sender, EventArgs e)
         {
-            var selectedItems = lstSelectedBooks.Items;
-
-            if (selectedItems.Count > 0)
+            if (lstSelectedBooks.SelectedIndex != -1)
             {
+                var selectedItems = lstSelectedBooks.SelectedItems;
+
                 List<Book> uncheckedBooks =
                     LibraryDB.GetAllUncheckedBooks();
 
-                List<Book> selectedBooks = new List<Book>();
-
-                for (int i = 0; i < selectedItems.to; i++)
-                {
-
-                }
-
-                foreach (Book b in uncheckedBooks)
-                {
-                    // DEBUG //
-                    if (selectedItems.Contains(b))
-                        selectedBooks.Add(b);
-                }
+                List<Book> selectedBooks = GetSelectedBooks(
+                    selectedItems, uncheckedBooks);
 
                 if (LibraryDB.CheckoutBooks(selectedBooks))
                 {
                     MessageBox.Show("Check-Out Successful.");
 
-                    ReloadPage();
+                    LoadBoxes();
                 }
                 else
                 {
@@ -103,39 +131,39 @@ namespace GroupSourceControlProject
             this.Close();
         }
 
-        private void ReloadPage()
+        private List<Book> GetSelectedBooks(ListBox.
+            SelectedObjectCollection selectedItems, List<Book> books)
         {
-            chkListCheckedOut.Items.Clear();
+            List<string> stringIds = new List<string>();
             
-            List<Book> checkedBooks =
-                MemberDB.GetMemberBooks();
-
-            if (checkedBooks != null)
+            // get string book ids
+            foreach (var item in selectedItems)
             {
-                foreach (Book b in checkedBooks)
+                stringIds.Add(item.ToString().
+                    Substring(0, item.ToString().IndexOf(",")));
+            }
+
+            List<int> BookIds = new List<int>();
+            
+            // get int book ids
+            foreach (string item in stringIds)
+            {
+                BookIds.Add(Convert.ToInt32(item));
+            }
+
+            List<Book> selectedBooks = new List<Book>();
+            
+            // get selected book ids
+            foreach (int id in BookIds)
+            {
+                foreach (Book b in books)
                 {
-                    chkListCheckedOut.Items.Add($"{b.Title},  " +
-                            $"{b.Author},  {b.PubDate},  " +
-                            $"{b.Category}");
+                    if (b.BookID == id)
+                        selectedBooks.Add(b);
                 }
             }
 
-            cboBooksAvail.Items.Clear();
-
-            List<Book> uncheckedBooks =
-                LibraryDB.GetAllUncheckedBooks();
-
-            if (uncheckedBooks != null)
-            {
-                foreach (Book b in uncheckedBooks)
-                {
-                    cboBooksAvail.Items.Add($"{b.Title},  " +
-                            $"{b.Author},  {b.PubDate},  " +
-                            $"{b.Category}");
-                }
-            }
-
-            lstSelectedBooks.Items.Clear();
+            return selectedBooks;
         }
     }
 }
