@@ -77,15 +77,15 @@ namespace GroupSourceControlProject
         /// <returns>bool</returns>
         public static bool IsChecked(List<Book> books)
         {
-            List<Book> uncheckedBooks = GetAllUncheckedBooks();
+            List<Book> memberBooks = MemberDB.GetMemberBooks();
 
             foreach (Book b in books)
             {
-                if (uncheckedBooks.Contains(b))
-                    return false;
+                if (memberBooks.Contains(b))
+                    return true;
             }
 
-            return true;
+            return false;
         }
     }
 }
