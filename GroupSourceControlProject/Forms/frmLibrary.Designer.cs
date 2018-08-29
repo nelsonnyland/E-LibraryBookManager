@@ -135,7 +135,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(552, 449);
+            this.ClientSize = new System.Drawing.Size(552, 469);
             this.Controls.Add(this.lstSelectedBooks);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.chkListCheckedOut);

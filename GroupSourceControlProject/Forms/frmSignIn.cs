@@ -146,5 +146,10 @@ namespace GroupSourceControlProject
             txtUsername.Text = String.Empty;
             txtPIN.Text = String.Empty;
         }
+
+        private void chkAdmin2_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

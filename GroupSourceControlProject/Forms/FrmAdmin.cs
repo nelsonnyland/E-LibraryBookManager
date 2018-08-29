@@ -16,5 +16,10 @@ namespace GroupSourceControlProject.Forms
         {
             InitializeComponent();
         }
+
+        private void btnAddBookToDB_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
