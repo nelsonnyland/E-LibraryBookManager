@@ -62,9 +62,11 @@ namespace GroupSourceControlProject
 
             List<Book> uncheckedBooks = new List<Book>();
 
+            List<Book> memberBooks = MemberDB.GetMemberBooks();
+
             foreach (Book book in allBooks)
             {
-                if (book.CheckedOut is false)
+                if (memberBooks.Contains(book) is false)
                     uncheckedBooks.Add(book);
             }
 
