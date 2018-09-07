@@ -1,11 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GroupSourceControlProject
@@ -27,13 +21,13 @@ namespace GroupSourceControlProject
             chkListCheckedOut.Items.Clear();
             
             List<Book> checkedBooks =
-                MemberDB.GetMemberBooks();
+                LibraryDB.GetMemberBooks();
 
             if (checkedBooks != null)
             {
                 foreach (Book b in checkedBooks)
                 {
-                    chkListCheckedOut.Items.Add($"{b.BookID}, " +
+                    chkListCheckedOut.Items.Add($"{b.ISBN}, " +
                                                 $"{b.Title},  " +
                                                 $"{b.Author},  " +
                                                 $"{b.PubDate},  " +
@@ -50,7 +44,7 @@ namespace GroupSourceControlProject
             {
                 foreach (Book b in uncheckedBooks)
                 {
-                    cboBooksAvail.Items.Add($"{b.BookID}, " +
+                    cboBooksAvail.Items.Add($"{b.ISBN}, " +
                                             $"{b.Title},  " +
                                             $"{b.Author},  " +
                                             $"{b.PubDate},  " +
@@ -64,20 +58,25 @@ namespace GroupSourceControlProject
         // TODO: Handle selected listbox item 
         private void BtnCheckIn_Click(object sender, EventArgs e)
         {
-            List<Book> memberBooks = MemberDB.GetMemberBooks();
+            List<Book> memberBooks = LibraryDB.GetMemberBooks();
             
             if (memberBooks != null)
             {
                 var selectedItems = chkListCheckedOut.SelectedItems;
 
-                List<Book> selectedBooks = GetSelectedBooks(
+                List<Book> selectedBooks = GetSelectedItems(
                     selectedItems, memberBooks);
 
-                LibraryDB.CheckInBooks(selectedBooks);
+                if (LibraryDB.CheckInBooks(selectedBooks))
+                {
+                    MessageBox.Show("Check-In Successful.");
 
-                MessageBox.Show("Check-In Successful.");
-
-                LoadBoxes();
+                    LoadBoxes();
+                }
+                else
+                {
+                    MessageBox.Show("Check-In Unsuccessful.");
+                }
             }
             else
             {
@@ -105,7 +104,7 @@ namespace GroupSourceControlProject
                 List<Book> uncheckedBooks =
                     LibraryDB.GetAllUncheckedBooks();
 
-                List<Book> selectedBooks = GetSelectedBooks(
+                List<Book> selectedBooks = GetSelectedItems(
                     selectedItems, uncheckedBooks);
 
                 if (LibraryDB.CheckoutBooks(selectedBooks))
@@ -131,37 +130,29 @@ namespace GroupSourceControlProject
             this.Close();
         }
 
-        private List<Book> GetSelectedBooks(ListBox.
+        private List<Book> GetSelectedItems(ListBox.
             SelectedObjectCollection selectedItems, List<Book> books)
         {
-            List<string> stringIds = new List<string>();
+            List<string> stringISBNs = new List<string>();
             
             // get string book ids
             foreach (var item in selectedItems)
             {
-                stringIds.Add(item.ToString().
+                stringISBNs.Add(item.ToString().
                     Substring(0, item.ToString().IndexOf(",")));
             }
 
-            List<int> BookIds = new List<int>();
+            List<int> intISBNs = new List<int>();
             
             // get int book ids
-            foreach (string item in stringIds)
+            foreach (string item in stringISBNs)
             {
-                BookIds.Add(Convert.ToInt32(item));
+                intISBNs.Add(Convert.ToInt32(item));
             }
 
-            List<Book> selectedBooks = new List<Book>();
-            
             // get selected book ids
-            foreach (int id in BookIds)
-            {
-                foreach (Book b in books)
-                {
-                    if (b.BookID == id)
-                        selectedBooks.Add(b);
-                }
-            }
+            List<Book> selectedBooks = 
+                LibraryDB.GetSelectedBooks(intISBNs);
 
             return selectedBooks;
         }

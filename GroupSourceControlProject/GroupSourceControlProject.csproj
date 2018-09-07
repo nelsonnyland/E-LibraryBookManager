@@ -75,6 +75,7 @@
     </Compile>
     <Compile Include="DBClasses\LibraryContext.cs" />
     <Compile Include="DBClasses\LibraryDB.cs" />
+    <Compile Include="ObjClasses\CurrentMember.cs" />
     <Compile Include="ObjClasses\Member.cs" />
     <Compile Include="DBClasses\MemberDB.cs" />
     <Compile Include="Program.cs" />

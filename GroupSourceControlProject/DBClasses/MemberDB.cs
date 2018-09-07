@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GroupSourceControlProject.ObjClasses;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -15,37 +16,49 @@ namespace GroupSourceControlProject
     public static class MemberDB
     {
         /// <summary>
-        /// Adds a member to the database.
+        /// Returns all members in the database.
         /// </summary>
-        /// <param name="member"></param>
-        public static bool Register(Member member)
-        {
-            LibraryContext context = new LibraryContext();
-
-            context.Members.Add(member);
-
-            context.SaveChanges();
-
-            return IsMember(member);
-        }
-
-        private static void LogIn(Member member)
-        {
-            CurrentMember.SetCurrentMember(member);
-        }
-
-        /// <summary>
-        /// Logs user in if verification passes and sets current
-        /// member to user.
-        /// </summary>
-        /// <param name="member"></param>
-        public static bool Validate(Member member)
+        /// <returns></returns>
+        public static List<Member> GetAllMembers()
         {
             LibraryContext context = new LibraryContext();
 
             List<Member> allMembers =
                 (from m in context.Members
                  select m).ToList();
+
+            return allMembers;
+        }
+
+        /// <summary>
+        /// Checks if the member passed in matches just 
+        /// username of a member in the database. 
+        /// If so, returns true, false otherwise.
+        /// </summary>
+        /// <param name="member"></param>
+        /// <returns>bool verification result</returns>
+        public static bool IsMember(Member member)
+        {
+            List<Member> allMembers = GetAllMembers();
+
+            foreach (Member item in allMembers)
+            {
+                if (item.Username == member.Username)
+                    return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Checks if the member passed in matches both the 
+        /// username and PIN of a member in the database. 
+        /// If so, the user is logged-in.
+        /// </summary>
+        /// <param name="member"></param>
+        public static bool Validate(Member member)
+        {
+            List<Member> allMembers = GetAllMembers();
 
             foreach (Member item in allMembers)
             {
@@ -61,69 +74,27 @@ namespace GroupSourceControlProject
         }
         
         /// <summary>
-        /// Verifies if a library member, if so
-        /// returns true.
+        /// Adds a member to the database.
         /// </summary>
         /// <param name="member"></param>
-        /// <returns>bool verification result</returns>
-        public static bool IsMember(Member member)
+        public static bool Register(Member member)
         {
             LibraryContext context = new LibraryContext();
 
-            List<Member> allMembers =
-                (from m in context.Members
-                 select m).ToList();
+            context.Members.Add(member);
 
-            foreach (Member item in allMembers)
-            {
-                if (item.Username == member.Username)
-                    return true;
-            }
+            context.SaveChanges();
 
-            return false;
+            return IsMember(member);
         }
 
         /// <summary>
-        /// Gets all books checked out by member.
+        /// Sets the current member logged-in to the website.
         /// </summary>
-        /// <param name="member">Member</param>
-        /// <returns>List<Book></returns>
-        public static List<Book> GetMemberBooks()
+        /// <param name="member"></param>
+        private static void LogIn(Member member)
         {
-            Member member = CurrentMember.GetCurrentMember();
-
-            return member.BooksChecked;
-        }
-
-        /// <summary>
-        /// Sets all books checked out by member.
-        /// </summary>
-        /// <param name="books">List<Book></param>
-        public static void SetMemberBooks(List<Book> books)
-        {
-            Member member = CurrentMember.GetCurrentMember();
-
-            member.BooksChecked = books;
-        }
-    }
-
-    /// <summary>
-    /// CurrentMember class keeps track of who the currently
-    /// logged-in member is. Accessible through public get
-    /// and set methods.
-    /// </summary>
-    public static class CurrentMember
-    {
-        private static Member Current { get; set; }
-
-        public static Member GetCurrentMember()
-        {
-            return Current;
-        }
-
-        public static void SetCurrentMember(Member member)
-        {
-            Current = member;
+            CurrentMember.SetCurrentMember(member);
         }
     }
 }
