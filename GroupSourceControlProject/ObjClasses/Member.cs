@@ -12,8 +12,9 @@ namespace GroupSourceControlProject
     public class Member
     {
         [Key]
-        [StringLength(10)]
-        public int MemberID { get; set; }
+        [MinLength(9)]
+        [MaxLength(9)]
+        public string MemberID { get; set; }
 
         [Required]
         public string Username { get; set; }

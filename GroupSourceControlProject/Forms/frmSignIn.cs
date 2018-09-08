@@ -17,7 +17,7 @@ namespace GroupSourceControlProject
             InitializeComponent();
         }
 
-        public void BtnSubmit_Click(object sender, EventArgs e)
+        public void Register(object sender, EventArgs e)
         {
             Member member = new Member();
 
@@ -25,6 +25,8 @@ namespace GroupSourceControlProject
 
             if (SubmissionCorrect())
             {
+                member.MemberID = MemberDB.GetMemberID();
+                
                 member.Username = txtUsername2.Text;
 
                 member.PIN = Convert.ToInt32(txtPIN2.Text);
@@ -57,7 +59,7 @@ namespace GroupSourceControlProject
             Clear();
         }
 
-        public void BtnSignIn_Click(object sender, EventArgs e)
+        public void SignIn(object sender, EventArgs e)
         {
             Member member = new Member();
 
@@ -92,7 +94,7 @@ namespace GroupSourceControlProject
             Clear();
         }
 
-        private void BtnCancel_Click(object sender, EventArgs e)
+        private void Cancel(object sender, EventArgs e)
         {
             this.Close();
         }
@@ -143,13 +145,10 @@ namespace GroupSourceControlProject
             txtFirstName.Text = String.Empty;
             txtLastName.Text = String.Empty;
             txtPIN2.Text = String.Empty;
+            chkAdmin.Checked = false;
             txtUsername.Text = String.Empty;
             txtPIN.Text = String.Empty;
-        }
-
-        private void chkAdmin2_CheckedChanged(object sender, EventArgs e)
-        {
-
+            chkAdmin2.Checked = false;
         }
     }
 }

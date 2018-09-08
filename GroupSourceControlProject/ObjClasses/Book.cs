@@ -12,8 +12,8 @@ namespace GroupSourceControlProject
     public class Book
     {
         [Key]
-        [Required]
-        [StringLength(10)]
+        [MinLength(8)]
+        [MaxLength(8)]
         public string ISBN { get; set; }
 
         [Required]

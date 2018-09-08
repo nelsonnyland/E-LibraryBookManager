@@ -130,12 +130,17 @@ namespace GroupSourceControlProject
             this.Close();
         }
 
+        /// <summary>
+        /// Converts selectedItems to int ISBNs.
+        /// </summary>
+        /// <param name="selectedItems"></param>
+        /// <param name="books"></param>
+        /// <returns>List<Book></returns>
         private List<Book> GetSelectedItems(ListBox.
             SelectedObjectCollection selectedItems, List<Book> books)
         {
             List<string> stringISBNs = new List<string>();
             
-            // get string book ids
             foreach (var item in selectedItems)
             {
                 stringISBNs.Add(item.ToString().
@@ -144,13 +149,11 @@ namespace GroupSourceControlProject
 
             List<int> intISBNs = new List<int>();
             
-            // get int book ids
             foreach (string item in stringISBNs)
             {
                 intISBNs.Add(Convert.ToInt32(item));
             }
 
-            // get selected book ids
             List<Book> selectedBooks = 
                 LibraryDB.GetSelectedBooks(intISBNs);
 

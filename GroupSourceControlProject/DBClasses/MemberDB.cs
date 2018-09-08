@@ -96,5 +96,20 @@ namespace GroupSourceControlProject
         {
             CurrentMember.SetCurrentMember(member);
         }
+
+        /// <summary>
+        /// Creates a custom member id for new members.
+        /// </summary>
+        /// <returns></returns>
+        public static string GetMemberID()
+        {
+            List<Member> members = GetAllMembers();
+
+            int intMemberID = 100000000 + members.Count + 1;
+
+            string memberID = intMemberID.ToString();
+
+            return memberID;
+        }
     }
 }

@@ -58,9 +58,11 @@ namespace GroupSourceControlProject
 
             List<Book> memberBooks = new List<Book>();
 
+            int memberID = Convert.ToInt32(member.MemberID);
+
             foreach (Book book in allBooks)
             {
-                if (book.CheckedOutBy == member.MemberID) 
+                if (book.CheckedOutBy == memberID) 
                     memberBooks.Add(book);
             }
 
@@ -124,10 +126,12 @@ namespace GroupSourceControlProject
             
             Member member = CurrentMember.GetCurrentMember();
 
+            int memberID = Convert.ToInt32(member.MemberID);
+
             foreach (Book book in books)
             {
                 Book dbBook = context.Books.Find(book.ISBN);
-                dbBook.CheckedOutBy = member.MemberID;
+                dbBook.CheckedOutBy = memberID;
             }
 
             context.SaveChanges();

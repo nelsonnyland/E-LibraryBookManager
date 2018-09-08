@@ -92,7 +92,7 @@
             this.btnSignIn.TabIndex = 3;
             this.btnSignIn.Text = "Sign-In";
             this.btnSignIn.UseVisualStyleBackColor = true;
-            this.btnSignIn.Click += new System.EventHandler(this.BtnSignIn_Click);
+            this.btnSignIn.Click += new System.EventHandler(this.SignIn);
             // 
             // btnCancel
             // 
@@ -103,7 +103,7 @@
             this.btnCancel.TabIndex = 2;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
+            this.btnCancel.Click += new System.EventHandler(this.Cancel);
             // 
             // grpSignIn
             // 
@@ -130,7 +130,6 @@
             this.chkAdmin2.TabIndex = 13;
             this.chkAdmin2.Text = "Administrator";
             this.chkAdmin2.UseVisualStyleBackColor = true;
-            this.chkAdmin2.CheckedChanged += new System.EventHandler(this.chkAdmin2_CheckedChanged);
             // 
             // grpRegister
             // 
@@ -198,7 +197,7 @@
             this.btnSubmit.TabIndex = 5;
             this.btnSubmit.Text = "Submit";
             this.btnSubmit.UseVisualStyleBackColor = true;
-            this.btnSubmit.Click += new System.EventHandler(this.BtnSubmit_Click);
+            this.btnSubmit.Click += new System.EventHandler(this.Register);
             // 
             // label6
             // 
