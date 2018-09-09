@@ -16,6 +16,9 @@ namespace GroupSourceControlProject
             LoadBoxes();
         }
 
+        /// <summary>
+        /// Clears form and loads list boxes with data.
+        /// </summary>
         private void LoadBoxes()
         {
             chkListCheckedOut.Items.Clear();
@@ -55,7 +58,6 @@ namespace GroupSourceControlProject
             lstSelectedBooks.Items.Clear();
         }
 
-        // TODO: Handle selected listbox item 
         private void BtnCheckIn_Click(object sender, EventArgs e)
         {
             List<Book> memberBooks = LibraryDB.GetMemberBooks();
@@ -65,7 +67,7 @@ namespace GroupSourceControlProject
                 var selectedItems = chkListCheckedOut.SelectedItems;
 
                 List<Book> selectedBooks = GetSelectedItems(
-                    selectedItems, memberBooks);
+                    selectedItems);
 
                 if (LibraryDB.CheckInBooks(selectedBooks))
                 {
@@ -75,7 +77,7 @@ namespace GroupSourceControlProject
                 }
                 else
                 {
-                    MessageBox.Show("Check-In Unsuccessful.");
+                    MessageBox.Show("Nothing selected.");
                 }
             }
             else
@@ -94,7 +96,6 @@ namespace GroupSourceControlProject
                 MessageBox.Show("Please select an item.");
         }
 
-        // TODO: Handle selected item as a string
         private void BtnCheckOut_Click(object sender, EventArgs e)
         {
             if (lstSelectedBooks.SelectedIndex != -1)
@@ -105,7 +106,7 @@ namespace GroupSourceControlProject
                     LibraryDB.GetAllUncheckedBooks();
 
                 List<Book> selectedBooks = GetSelectedItems(
-                    selectedItems, uncheckedBooks);
+                    selectedItems);
 
                 if (LibraryDB.CheckoutBooks(selectedBooks))
                 {
@@ -120,9 +121,8 @@ namespace GroupSourceControlProject
             }
             else
             {
-                MessageBox.Show("Nothing to check-out");
+                MessageBox.Show("Nothing selected.");
             }
-
         }
 
         private void BtnCancel_Click(object sender, EventArgs e)
@@ -131,13 +131,13 @@ namespace GroupSourceControlProject
         }
 
         /// <summary>
-        /// Converts selectedItems to int ISBNs.
+        /// Converts selectedItems to string ISBNs.
         /// </summary>
         /// <param name="selectedItems"></param>
         /// <param name="books"></param>
         /// <returns>List<Book></returns>
         private List<Book> GetSelectedItems(ListBox.
-            SelectedObjectCollection selectedItems, List<Book> books)
+            SelectedObjectCollection selectedItems)
         {
             List<string> stringISBNs = new List<string>();
             
@@ -147,15 +147,8 @@ namespace GroupSourceControlProject
                     Substring(0, item.ToString().IndexOf(",")));
             }
 
-            List<int> intISBNs = new List<int>();
-            
-            foreach (string item in stringISBNs)
-            {
-                intISBNs.Add(Convert.ToInt32(item));
-            }
-
             List<Book> selectedBooks = 
-                LibraryDB.GetSelectedBooks(intISBNs);
+                LibraryDB.GetSelectedBooks(stringISBNs);
 
             return selectedBooks;
         }

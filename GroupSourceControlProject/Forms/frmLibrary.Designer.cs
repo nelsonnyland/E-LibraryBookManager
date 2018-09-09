@@ -55,14 +55,14 @@
             this.chkListCheckedOut.Location = new System.Drawing.Point(36, 57);
             this.chkListCheckedOut.Name = "chkListCheckedOut";
             this.chkListCheckedOut.Size = new System.Drawing.Size(383, 109);
-            this.chkListCheckedOut.TabIndex = 2;
+            this.chkListCheckedOut.TabIndex = 0;
             // 
             // btnCheckIn
             // 
             this.btnCheckIn.Location = new System.Drawing.Point(441, 57);
             this.btnCheckIn.Name = "btnCheckIn";
             this.btnCheckIn.Size = new System.Drawing.Size(75, 23);
-            this.btnCheckIn.TabIndex = 3;
+            this.btnCheckIn.TabIndex = 1;
             this.btnCheckIn.Text = "Check-In";
             this.btnCheckIn.UseVisualStyleBackColor = true;
             this.btnCheckIn.Click += new System.EventHandler(this.BtnCheckIn_Click);
@@ -72,7 +72,7 @@
             this.btnAdd.Location = new System.Drawing.Point(441, 217);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
-            this.btnAdd.TabIndex = 4;
+            this.btnAdd.TabIndex = 3;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
@@ -82,7 +82,7 @@
             this.btnCancel.Location = new System.Drawing.Point(441, 383);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 5;
+            this.btnCancel.TabIndex = 6;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
@@ -107,18 +107,19 @@
             // 
             // cboBooksAvail
             // 
+            this.cboBooksAvail.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboBooksAvail.FormattingEnabled = true;
             this.cboBooksAvail.Location = new System.Drawing.Point(36, 217);
             this.cboBooksAvail.Name = "cboBooksAvail";
             this.cboBooksAvail.Size = new System.Drawing.Size(383, 21);
-            this.cboBooksAvail.TabIndex = 9;
+            this.cboBooksAvail.TabIndex = 2;
             // 
             // btnCheckOut
             // 
             this.btnCheckOut.Location = new System.Drawing.Point(441, 297);
             this.btnCheckOut.Name = "btnCheckOut";
             this.btnCheckOut.Size = new System.Drawing.Size(75, 23);
-            this.btnCheckOut.TabIndex = 10;
+            this.btnCheckOut.TabIndex = 5;
             this.btnCheckOut.Text = "Check-Out";
             this.btnCheckOut.UseVisualStyleBackColor = true;
             this.btnCheckOut.Click += new System.EventHandler(this.BtnCheckOut_Click);
@@ -129,26 +130,26 @@
             this.lstSelectedBooks.Location = new System.Drawing.Point(36, 297);
             this.lstSelectedBooks.Name = "lstSelectedBooks";
             this.lstSelectedBooks.Size = new System.Drawing.Size(383, 108);
-            this.lstSelectedBooks.TabIndex = 11;
+            this.lstSelectedBooks.TabIndex = 4;
             // 
             // FrmLibrary
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(552, 469);
-            this.Controls.Add(this.lstSelectedBooks);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.chkListCheckedOut);
             this.Controls.Add(this.btnCheckIn);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.cboBooksAvail);
             this.Controls.Add(this.btnAdd);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lstSelectedBooks);
             this.Controls.Add(this.btnCheckOut);
             this.Controls.Add(this.btnCancel);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label3);
             this.Name = "FrmLibrary";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmLibrary";
+            this.Text = "Welcome";
             this.Load += new System.EventHandler(this.FrmLibrary_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

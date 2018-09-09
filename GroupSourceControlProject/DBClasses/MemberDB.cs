@@ -56,16 +56,16 @@ namespace GroupSourceControlProject
         /// If so, the user is logged-in.
         /// </summary>
         /// <param name="member"></param>
-        public static bool Validate(Member member)
+        public static bool LogIn(Member member)
         {
             List<Member> allMembers = GetAllMembers();
 
-            foreach (Member item in allMembers)
+            foreach (Member dbMember in allMembers)
             {
-                if ((item.Username == member.Username) 
-                    && (item.PIN == member.PIN))
+                if ((dbMember.Username == member.Username) 
+                    && (dbMember.PIN == member.PIN))
                 {
-                    LogIn(member);
+                    SetMember(dbMember);
                     return true;
                 }
             }
@@ -92,7 +92,7 @@ namespace GroupSourceControlProject
         /// Sets the current member logged-in to the website.
         /// </summary>
         /// <param name="member"></param>
-        private static void LogIn(Member member)
+        private static void SetMember(Member member)
         {
             CurrentMember.SetCurrentMember(member);
         }
@@ -101,7 +101,7 @@ namespace GroupSourceControlProject
         /// Creates a custom member id for new members.
         /// </summary>
         /// <returns></returns>
-        public static string GetMemberID()
+        public static string CreateMemberID()
         {
             List<Member> members = GetAllMembers();
 
@@ -110,6 +110,21 @@ namespace GroupSourceControlProject
             string memberID = intMemberID.ToString();
 
             return memberID;
+        }
+
+        /// <summary>
+        /// Removes member from the database.
+        /// </summary>
+        /// <param name="memberId"></param>
+        public static void RemoveMember(string memberId)
+        {
+            LibraryContext context = new LibraryContext();
+
+            Member member = context.Members.Find(memberId);
+            
+            context.Members.Remove(member);
+
+            context.SaveChanges();
         }
     }
 }

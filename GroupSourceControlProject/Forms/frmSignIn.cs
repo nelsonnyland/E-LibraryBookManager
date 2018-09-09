@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GroupSourceControlProject.Forms;
+using GroupSourceControlProject.ObjClasses;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,11 +23,9 @@ namespace GroupSourceControlProject
         {
             Member member = new Member();
 
-            Random random = new Random();
-
             if (SubmissionCorrect())
             {
-                member.MemberID = MemberDB.GetMemberID();
+                member.MemberID = MemberDB.CreateMemberID();
                 
                 member.Username = txtUsername2.Text;
 
@@ -63,7 +63,7 @@ namespace GroupSourceControlProject
         {
             Member member = new Member();
 
-            if (!Empty(txtUsername.Text))
+            if (!IsEmpty(txtUsername.Text))
                 member.Username = txtUsername.Text;
 
             if (!InvalidInt(txtPIN.Text))
@@ -71,15 +71,34 @@ namespace GroupSourceControlProject
 
             if (MemberDB.IsMember(member))
             {
-                if (MemberDB.Validate(member))
+                if (MemberDB.LogIn(member))
                 {
-                    this.Hide();
+                    Member dbMember = 
+                        CurrentMember.GetCurrentMember();
+                    
+                    if (chkAdmin2.Checked is true &&
+                        dbMember.IsAdmin is true)
+                    {
+                        this.Hide();
 
-                    FrmLibrary addLibraryForm = new FrmLibrary();
+                        FrmAdmin addAdminForm = 
+                            new FrmAdmin();
 
-                    addLibraryForm.ShowDialog();
+                        addAdminForm.ShowDialog();
 
-                    this.Close();
+                        this.Close();
+                    }
+                    else
+                    {
+                        this.Hide();
+
+                        FrmLibrary addLibraryForm = 
+                            new FrmLibrary();
+
+                        addLibraryForm.ShowDialog();
+
+                        this.Close();
+                    }
                 }
                 else
                 {
@@ -105,15 +124,13 @@ namespace GroupSourceControlProject
             {
                 if (Int32.TryParse(input, out int test))
                 {
-                    // is valid
                     return false;
                 }
             }
-            // is invalid
             return true;
         }
 
-        private static bool Empty(string input)
+        private static bool IsEmpty(string input)
         {
             if (String.IsNullOrWhiteSpace(input))
             {
@@ -124,16 +141,16 @@ namespace GroupSourceControlProject
 
         private bool SubmissionCorrect()
         {
-            if (Empty(txtUsername2.Text))
+            if (IsEmpty(txtUsername2.Text))
+                return false;
+
+            if (IsEmpty(txtFirstName.Text))
+                return false;
+
+            if (IsEmpty(txtLastName.Text))
                 return false;
 
             if (InvalidInt(txtPIN2.Text))
-                return false;
-
-            if (Empty(txtUsername2.Text))
-                return false;
-
-            if (Empty(txtUsername2.Text))
                 return false;
 
             return true;
@@ -141,13 +158,13 @@ namespace GroupSourceControlProject
 
         private void Clear()
         {
-            txtUsername2.Text = String.Empty;
-            txtFirstName.Text = String.Empty;
-            txtLastName.Text = String.Empty;
-            txtPIN2.Text = String.Empty;
+            txtUsername2.Clear();
+            txtFirstName.Clear();
+            txtLastName.Clear();
+            txtPIN2.Clear();
             chkAdmin.Checked = false;
-            txtUsername.Text = String.Empty;
-            txtPIN.Text = String.Empty;
+            txtUsername.Clear();
+            txtPIN.Clear();
             chkAdmin2.Checked = false;
         }
     }

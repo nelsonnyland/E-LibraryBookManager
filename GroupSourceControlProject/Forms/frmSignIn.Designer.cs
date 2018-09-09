@@ -237,6 +237,7 @@
             // 
             // FrmSignIn
             // 
+            this.AcceptButton = this.btnSignIn;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
@@ -245,7 +246,7 @@
             this.Controls.Add(this.grpSignIn);
             this.Name = "FrmSignIn";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "E-Library";
+            this.Text = "E-Library Sign-In";
             this.grpSignIn.ResumeLayout(false);
             this.grpSignIn.PerformLayout();
             this.grpRegister.ResumeLayout(false);

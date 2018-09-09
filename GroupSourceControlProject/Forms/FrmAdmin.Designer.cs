@@ -41,20 +41,22 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.lblAddMember = new System.Windows.Forms.Label();
+            this.labelxx = new System.Windows.Forms.Label();
             this.grpLibraryDB = new System.Windows.Forms.GroupBox();
             this.lstBooks = new System.Windows.Forms.ListBox();
             this.btnRemove2 = new System.Windows.Forms.Button();
             this.txtISBN = new System.Windows.Forms.TextBox();
             this.txtTitle = new System.Windows.Forms.TextBox();
             this.txtAuthor = new System.Windows.Forms.TextBox();
+            this.txtPubDate = new System.Windows.Forms.TextBox();
             this.txtCategory = new System.Windows.Forms.TextBox();
             this.btnAddBookToDB = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.lblAddBook = new System.Windows.Forms.Label();
+            this.label111 = new System.Windows.Forms.Label();
             this.grpMemberDB.SuspendLayout();
             this.grpLibraryDB.SuspendLayout();
             this.SuspendLayout();
@@ -73,10 +75,10 @@
             this.grpMemberDB.Controls.Add(this.label4);
             this.grpMemberDB.Controls.Add(this.label3);
             this.grpMemberDB.Controls.Add(this.label2);
-            this.grpMemberDB.Controls.Add(this.lblAddMember);
+            this.grpMemberDB.Controls.Add(this.labelxx);
             this.grpMemberDB.Location = new System.Drawing.Point(21, 22);
             this.grpMemberDB.Name = "grpMemberDB";
-            this.grpMemberDB.Size = new System.Drawing.Size(560, 243);
+            this.grpMemberDB.Size = new System.Drawing.Size(598, 243);
             this.grpMemberDB.TabIndex = 0;
             this.grpMemberDB.TabStop = false;
             this.grpMemberDB.Text = "Edit Members";
@@ -86,69 +88,71 @@
             this.lstMembers.FormattingEnabled = true;
             this.lstMembers.Location = new System.Drawing.Point(7, 20);
             this.lstMembers.Name = "lstMembers";
-            this.lstMembers.Size = new System.Drawing.Size(278, 160);
+            this.lstMembers.Size = new System.Drawing.Size(316, 160);
             this.lstMembers.TabIndex = 0;
             // 
             // btnRemove
             // 
-            this.btnRemove.Location = new System.Drawing.Point(210, 195);
+            this.btnRemove.Location = new System.Drawing.Point(248, 195);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(75, 23);
-            this.btnRemove.TabIndex = 1;
+            this.btnRemove.TabIndex = 4;
             this.btnRemove.Text = "Remove";
             this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.Click += new System.EventHandler(this.RemoveMember);
             // 
             // txtUsername3
             // 
-            this.txtUsername3.Location = new System.Drawing.Point(396, 49);
+            this.txtUsername3.Location = new System.Drawing.Point(431, 49);
             this.txtUsername3.Name = "txtUsername3";
             this.txtUsername3.Size = new System.Drawing.Size(142, 20);
-            this.txtUsername3.TabIndex = 7;
+            this.txtUsername3.TabIndex = 0;
             // 
             // txtFirstName2
             // 
-            this.txtFirstName2.Location = new System.Drawing.Point(396, 80);
+            this.txtFirstName2.Location = new System.Drawing.Point(431, 80);
             this.txtFirstName2.Name = "txtFirstName2";
             this.txtFirstName2.Size = new System.Drawing.Size(142, 20);
-            this.txtFirstName2.TabIndex = 8;
+            this.txtFirstName2.TabIndex = 1;
             // 
             // txtLastName2
             // 
-            this.txtLastName2.Location = new System.Drawing.Point(396, 111);
+            this.txtLastName2.Location = new System.Drawing.Point(431, 111);
             this.txtLastName2.Name = "txtLastName2";
             this.txtLastName2.Size = new System.Drawing.Size(142, 20);
-            this.txtLastName2.TabIndex = 9;
+            this.txtLastName2.TabIndex = 2;
             // 
             // txtPIN3
             // 
-            this.txtPIN3.Location = new System.Drawing.Point(396, 142);
+            this.txtPIN3.Location = new System.Drawing.Point(431, 142);
             this.txtPIN3.Name = "txtPIN3";
             this.txtPIN3.Size = new System.Drawing.Size(37, 20);
-            this.txtPIN3.TabIndex = 10;
+            this.txtPIN3.TabIndex = 3;
             // 
             // chkAdmin3
             // 
             this.chkAdmin3.AutoSize = true;
-            this.chkAdmin3.Location = new System.Drawing.Point(313, 199);
+            this.chkAdmin3.Location = new System.Drawing.Point(348, 199);
             this.chkAdmin3.Name = "chkAdmin3";
             this.chkAdmin3.Size = new System.Drawing.Size(86, 17);
-            this.chkAdmin3.TabIndex = 13;
+            this.chkAdmin3.TabIndex = 5;
             this.chkAdmin3.Text = "Administrator";
             this.chkAdmin3.UseVisualStyleBackColor = true;
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(462, 195);
+            this.btnAdd.Location = new System.Drawing.Point(497, 195);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
-            this.btnAdd.TabIndex = 11;
+            this.btnAdd.TabIndex = 6;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.AddMember);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(310, 145);
+            this.label5.Location = new System.Drawing.Point(345, 145);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(25, 13);
             this.label5.TabIndex = 6;
@@ -157,7 +161,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(310, 114);
+            this.label4.Location = new System.Drawing.Point(345, 114);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(58, 13);
             this.label4.TabIndex = 5;
@@ -166,7 +170,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(310, 83);
+            this.label3.Location = new System.Drawing.Point(345, 83);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(57, 13);
             this.label3.TabIndex = 4;
@@ -175,20 +179,20 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(310, 52);
+            this.label2.Location = new System.Drawing.Point(345, 52);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(55, 13);
             this.label2.TabIndex = 3;
             this.label2.Text = "Username";
             // 
-            // lblAddMember
+            // labelxx
             // 
-            this.lblAddMember.AutoSize = true;
-            this.lblAddMember.Location = new System.Drawing.Point(310, 20);
-            this.lblAddMember.Name = "lblAddMember";
-            this.lblAddMember.Size = new System.Drawing.Size(70, 13);
-            this.lblAddMember.TabIndex = 2;
-            this.lblAddMember.Text = "Add Member:";
+            this.labelxx.AutoSize = true;
+            this.labelxx.Location = new System.Drawing.Point(345, 20);
+            this.labelxx.Name = "labelxx";
+            this.labelxx.Size = new System.Drawing.Size(70, 13);
+            this.labelxx.TabIndex = 2;
+            this.labelxx.Text = "Add Member:";
             // 
             // grpLibraryDB
             // 
@@ -197,16 +201,18 @@
             this.grpLibraryDB.Controls.Add(this.txtISBN);
             this.grpLibraryDB.Controls.Add(this.txtTitle);
             this.grpLibraryDB.Controls.Add(this.txtAuthor);
+            this.grpLibraryDB.Controls.Add(this.txtPubDate);
             this.grpLibraryDB.Controls.Add(this.txtCategory);
             this.grpLibraryDB.Controls.Add(this.btnAddBookToDB);
             this.grpLibraryDB.Controls.Add(this.label10);
             this.grpLibraryDB.Controls.Add(this.label9);
             this.grpLibraryDB.Controls.Add(this.label8);
+            this.grpLibraryDB.Controls.Add(this.label1);
             this.grpLibraryDB.Controls.Add(this.label7);
-            this.grpLibraryDB.Controls.Add(this.lblAddBook);
+            this.grpLibraryDB.Controls.Add(this.label111);
             this.grpLibraryDB.Location = new System.Drawing.Point(21, 287);
             this.grpLibraryDB.Name = "grpLibraryDB";
-            this.grpLibraryDB.Size = new System.Drawing.Size(560, 255);
+            this.grpLibraryDB.Size = new System.Drawing.Size(598, 272);
             this.grpLibraryDB.TabIndex = 1;
             this.grpLibraryDB.TabStop = false;
             this.grpLibraryDB.Text = "Edit Books";
@@ -216,60 +222,68 @@
             this.lstBooks.FormattingEnabled = true;
             this.lstBooks.Location = new System.Drawing.Point(7, 20);
             this.lstBooks.Name = "lstBooks";
-            this.lstBooks.Size = new System.Drawing.Size(278, 173);
+            this.lstBooks.Size = new System.Drawing.Size(316, 186);
             this.lstBooks.TabIndex = 0;
             // 
             // btnRemove2
             // 
-            this.btnRemove2.Location = new System.Drawing.Point(209, 210);
+            this.btnRemove2.Location = new System.Drawing.Point(248, 224);
             this.btnRemove2.Name = "btnRemove2";
             this.btnRemove2.Size = new System.Drawing.Size(75, 23);
-            this.btnRemove2.TabIndex = 1;
+            this.btnRemove2.TabIndex = 5;
             this.btnRemove2.Text = "Remove";
             this.btnRemove2.UseVisualStyleBackColor = true;
+            this.btnRemove2.Click += new System.EventHandler(this.RemoveBook);
             // 
             // txtISBN
             // 
-            this.txtISBN.Location = new System.Drawing.Point(396, 53);
+            this.txtISBN.Location = new System.Drawing.Point(425, 53);
             this.txtISBN.Name = "txtISBN";
             this.txtISBN.Size = new System.Drawing.Size(142, 20);
-            this.txtISBN.TabIndex = 7;
+            this.txtISBN.TabIndex = 0;
             // 
             // txtTitle
             // 
-            this.txtTitle.Location = new System.Drawing.Point(396, 85);
+            this.txtTitle.Location = new System.Drawing.Point(425, 87);
             this.txtTitle.Name = "txtTitle";
             this.txtTitle.Size = new System.Drawing.Size(142, 20);
-            this.txtTitle.TabIndex = 8;
+            this.txtTitle.TabIndex = 1;
             // 
             // txtAuthor
             // 
-            this.txtAuthor.Location = new System.Drawing.Point(396, 117);
+            this.txtAuthor.Location = new System.Drawing.Point(425, 121);
             this.txtAuthor.Name = "txtAuthor";
             this.txtAuthor.Size = new System.Drawing.Size(142, 20);
-            this.txtAuthor.TabIndex = 9;
+            this.txtAuthor.TabIndex = 2;
+            // 
+            // txtPubDate
+            // 
+            this.txtPubDate.Location = new System.Drawing.Point(426, 155);
+            this.txtPubDate.Name = "txtPubDate";
+            this.txtPubDate.Size = new System.Drawing.Size(141, 20);
+            this.txtPubDate.TabIndex = 3;
             // 
             // txtCategory
             // 
-            this.txtCategory.Location = new System.Drawing.Point(396, 149);
+            this.txtCategory.Location = new System.Drawing.Point(426, 186);
             this.txtCategory.Name = "txtCategory";
-            this.txtCategory.Size = new System.Drawing.Size(142, 20);
-            this.txtCategory.TabIndex = 10;
+            this.txtCategory.Size = new System.Drawing.Size(141, 20);
+            this.txtCategory.TabIndex = 4;
             // 
             // btnAddBookToDB
             // 
-            this.btnAddBookToDB.Location = new System.Drawing.Point(461, 210);
+            this.btnAddBookToDB.Location = new System.Drawing.Point(492, 224);
             this.btnAddBookToDB.Name = "btnAddBookToDB";
             this.btnAddBookToDB.Size = new System.Drawing.Size(75, 23);
-            this.btnAddBookToDB.TabIndex = 11;
+            this.btnAddBookToDB.TabIndex = 6;
             this.btnAddBookToDB.Text = "Add";
             this.btnAddBookToDB.UseVisualStyleBackColor = true;
-            this.btnAddBookToDB.Click += new System.EventHandler(this.btnAddBookToDB_Click);
+            this.btnAddBookToDB.Click += new System.EventHandler(this.AddBook);
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(316, 152);
+            this.label10.Location = new System.Drawing.Point(345, 189);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(49, 13);
             this.label10.TabIndex = 6;
@@ -278,7 +292,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(316, 120);
+            this.label9.Location = new System.Drawing.Point(345, 124);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(38, 13);
             this.label9.TabIndex = 5;
@@ -287,39 +301,50 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(316, 88);
+            this.label8.Location = new System.Drawing.Point(345, 90);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(27, 13);
             this.label8.TabIndex = 4;
             this.label8.Text = "Title";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(345, 158);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(49, 13);
+            this.label1.TabIndex = 12;
+            this.label1.Text = "PubDate";
+            // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(316, 56);
+            this.label7.Location = new System.Drawing.Point(345, 56);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(32, 13);
             this.label7.TabIndex = 3;
             this.label7.Text = "ISBN";
             // 
-            // lblAddBook
+            // label111
             // 
-            this.lblAddBook.AutoSize = true;
-            this.lblAddBook.Location = new System.Drawing.Point(316, 20);
-            this.lblAddBook.Name = "lblAddBook";
-            this.lblAddBook.Size = new System.Drawing.Size(54, 13);
-            this.lblAddBook.TabIndex = 2;
-            this.lblAddBook.Text = "Add Book";
+            this.label111.AutoSize = true;
+            this.label111.Location = new System.Drawing.Point(345, 20);
+            this.label111.Name = "label111";
+            this.label111.Size = new System.Drawing.Size(57, 13);
+            this.label111.TabIndex = 2;
+            this.label111.Text = "Add Book:";
             // 
             // FrmAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(608, 565);
+            this.ClientSize = new System.Drawing.Size(642, 586);
             this.Controls.Add(this.grpMemberDB);
             this.Controls.Add(this.grpLibraryDB);
             this.Name = "FrmAdmin";
-            this.Text = "FrmAdmin";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Book Database Manager";
+            this.Load += new System.EventHandler(this.FormLoad);
             this.grpMemberDB.ResumeLayout(false);
             this.grpMemberDB.PerformLayout();
             this.grpLibraryDB.ResumeLayout(false);
@@ -332,7 +357,7 @@
 
         private System.Windows.Forms.GroupBox grpMemberDB;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label lblAddMember;
+        private System.Windows.Forms.Label labelxx;
         private System.Windows.Forms.Button btnRemove;
         private System.Windows.Forms.ListBox lstMembers;
         private System.Windows.Forms.Button btnAdd;
@@ -349,7 +374,7 @@
         private System.Windows.Forms.CheckBox chkAdmin3;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label lblAddBook;
+        private System.Windows.Forms.Label label111;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button btnAddBookToDB;
@@ -357,5 +382,7 @@
         private System.Windows.Forms.TextBox txtAuthor;
         private System.Windows.Forms.TextBox txtTitle;
         private System.Windows.Forms.TextBox txtISBN;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtPubDate;
     }
 }

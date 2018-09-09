@@ -74,13 +74,13 @@ namespace GroupSourceControlProject
         /// </summary>
         /// <param name="isbns"></param>
         /// <returns>List<Book></returns>
-        public static List<Book> GetSelectedBooks(List<int> isbns)
+        public static List<Book> GetSelectedBooks(List<string> isbns)
         {
             LibraryContext context = new LibraryContext();
 
             List<Book> selectedBooks = new List<Book>();
 
-            foreach (int isbn in isbns)
+            foreach (string isbn in isbns)
             {
                 Book dbBook = context.Books.Find(isbn);
                 selectedBooks.Add(dbBook);
@@ -161,6 +161,53 @@ namespace GroupSourceControlProject
             }
 
             return true;
+        }
+
+        /// <summary>
+        /// Checks whether given book is already in
+        /// the database.
+        /// </summary>
+        /// <param name="book"></param>
+        /// <returns>bool result</returns>
+        public static bool IsBook(Book book)
+        {
+            List<Book> allBooks = GetAllBooks();
+
+            foreach (Book b in allBooks)
+            {
+                if (book.Title == b.Title)
+                    return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Adds given book to the database.
+        /// </summary>
+        /// <param name="book"></param>
+        public static void AddBook(Book book)
+        {
+            LibraryContext context = new LibraryContext();
+
+            context.Books.Add(book);
+
+            context.SaveChanges();
+        }
+
+        /// <summary>
+        /// Removes book from the database.
+        /// </summary>
+        /// <param name="isbn"></param>
+        public static void RemoveBook(string isbn)
+        {
+            LibraryContext context = new LibraryContext();
+
+            Book book = context.Books.Find(isbn);
+            
+            context.Books.Remove(book);
+
+            context.SaveChanges();
         }
     }
 }
