@@ -45,6 +45,4 @@ When you are signed-in to the application, a new dialog opens up with a listbox 
 -----------------------------------------------------
 #### Administrator Services:
 
-`[In Development]`
-
 There are administrator services for accessing the library database for editing member and book information. CRUD functionality is accessed by checking the box for administrator when signing-in.
