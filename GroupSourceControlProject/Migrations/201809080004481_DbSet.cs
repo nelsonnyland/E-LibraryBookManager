@@ -3,7 +3,7 @@ namespace GroupSourceControlProject.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class DBStart : DbMigration
+    public partial class DbSet : DbMigration
     {
         public override void Up()
         {
@@ -11,25 +11,25 @@ namespace GroupSourceControlProject.Migrations
                 "dbo.Books",
                 c => new
                     {
-                        BookID = c.Int(nullable: false, identity: true),
-                        ISBN = c.String(),
-                        Title = c.String(),
-                        Author = c.String(),
+                        ISBN = c.String(nullable: false, maxLength: 8),
+                        Title = c.String(nullable: false),
+                        Author = c.String(nullable: false),
                         PubDate = c.Int(nullable: false),
-                        CheckedOut = c.Boolean(nullable: false),
-                        Category = c.String(),
+                        Category = c.String(nullable: false),
+                        CheckedOutBy = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => t.BookID);
+                .PrimaryKey(t => t.ISBN);
             
             CreateTable(
                 "dbo.Members",
                 c => new
                     {
-                        MemberID = c.Int(nullable: false, identity: true),
-                        CardNumber = c.Int(nullable: false),
+                        MemberID = c.String(nullable: false, maxLength: 9),
+                        Username = c.String(nullable: false),
                         PIN = c.Int(nullable: false),
-                        LastName = c.String(),
-                        FirstName = c.String(),
+                        LastName = c.String(nullable: false),
+                        FirstName = c.String(nullable: false),
+                        IsAdmin = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.MemberID);
             
