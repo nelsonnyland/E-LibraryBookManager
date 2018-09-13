@@ -164,25 +164,29 @@ namespace GroupSourceControlProject.Forms
             }
         }
 
-        private static bool IsNotInt(string input)
+        private static bool IsInt(string input)
         {
             if (!String.IsNullOrEmpty(input))
             {
-                if (Int32.TryParse(input, out int test))
-                {
-                    return false;
-                }
+                return Int32.TryParse(input, out int test);
             }
-            return true;
+            return false;
+        }
+
+        private static bool IsRange(string isbn)
+        {
+            int intIsbn = Convert.ToInt32(isbn);
+
+            if (intIsbn < 10000000 || 
+                intIsbn > 99999999)
+                return false;
+            else
+                return true;
         }
 
         private static bool IsEmpty(string input)
         {
-            if (String.IsNullOrWhiteSpace(input))
-            {
-                return true;
-            }
-            return false;
+            return String.IsNullOrWhiteSpace(input);
         }
 
         private bool MemberSubmission()
@@ -196,7 +200,7 @@ namespace GroupSourceControlProject.Forms
             if (IsEmpty(txtLastName2.Text))
                 return false;
 
-            if (IsNotInt(txtPIN3.Text))
+            if (!IsInt(txtPIN3.Text))
                 return false;
 
             return true;
@@ -204,9 +208,24 @@ namespace GroupSourceControlProject.Forms
 
         private bool BookSubmission()
         {
-            if (IsNotInt(txtISBN.Text))
+            // check if isbn is an int
+            if (IsInt(txtISBN.Text) is false)
             {
                 MessageBox.Show("ISBN must be an 8 digit number.");
+                return false;
+            }
+            
+            // check if isbn is correct length
+            if (IsRange(txtISBN.Text) is false)
+            {
+                MessageBox.Show("ISBN must be an 8 digit number.");
+                return false;
+            }
+
+            // check if isbn is already in db
+            if (LibraryDB.IsBook(txtISBN.Text))
+            {
+                MessageBox.Show("Duplicate ISBN. Try again.");
                 return false;
             }
 

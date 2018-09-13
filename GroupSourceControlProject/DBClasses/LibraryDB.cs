@@ -164,8 +164,8 @@ namespace GroupSourceControlProject
         }
 
         /// <summary>
-        /// Checks whether given book is already in
-        /// the database.
+        /// Checks whether given title is already in
+        /// the database. True if found.
         /// </summary>
         /// <param name="book"></param>
         /// <returns>bool result</returns>
@@ -180,6 +180,24 @@ namespace GroupSourceControlProject
             }
 
             return false;
+        }
+
+        /// <summary>
+        /// Checks whether given isbn is already in the 
+        /// database. True if found.
+        /// </summary>
+        /// <param name="isbn"></param>
+        /// <returns>bool result</returns>
+        public static bool IsBook(string isbn)
+        {
+            LibraryContext context = new LibraryContext();
+
+            Book isBook = context.Books.Find(isbn);
+
+            if (isBook is null)
+                return false;
+            else
+                return true;
         }
 
         /// <summary>
