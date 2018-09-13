@@ -1,4 +1,4 @@
-# LibraryDB 
+# E-Library Book Manager
 ## A Library Kiosk Application
 ### Collaborators: Nelson Nyland, Krista Betcher
 
