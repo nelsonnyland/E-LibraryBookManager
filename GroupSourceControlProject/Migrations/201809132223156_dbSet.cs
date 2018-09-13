@@ -3,7 +3,7 @@ namespace GroupSourceControlProject.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class DbSet : DbMigration
+    public partial class dbSet : DbMigration
     {
         public override void Up()
         {

@@ -66,9 +66,9 @@
     <Compile Include="Forms\FrmLibrary.Designer.cs">
       <DependentUpon>FrmLibrary.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201809080004481_DbSet.cs" />
-    <Compile Include="Migrations\201809080004481_DbSet.Designer.cs">
-      <DependentUpon>201809080004481_DbSet.cs</DependentUpon>
+    <Compile Include="Migrations\201809132223156_dbSet.cs" />
+    <Compile Include="Migrations\201809132223156_dbSet.Designer.cs">
+      <DependentUpon>201809132223156_dbSet.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ObjClasses\Book.cs" />
@@ -94,8 +94,8 @@
     <EmbeddedResource Include="Forms\FrmSignIn.resx">
       <DependentUpon>FrmSignIn.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201809080004481_DbSet.resx">
-      <DependentUpon>201809080004481_DbSet.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201809132223156_dbSet.resx">
+      <DependentUpon>201809132223156_dbSet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
