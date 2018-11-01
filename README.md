@@ -8,6 +8,8 @@
 When you open the application you are greeted by a registration and sign-in dialog. 
 There is also an alternate Administrator checkbox for use in editing the database.
 
+![](Login.JPG)
+
 *Registration*
 
 > Username
@@ -29,6 +31,8 @@ There is also an alternate Administrator checkbox for use in editing the databas
 #### Library Services:
 When you are signed-in to the application, a new dialog opens up with a listbox for books that have been checked-out, a drop-down box filled with books available, and a listbox for books selected to check-out. Buttons for checking-in, adding to check-out pile, and checking-out are available.
 
+![](Check-in.JPG)
+
 *Checked-Out Books*
 
 > Check-in
@@ -46,3 +50,5 @@ When you are signed-in to the application, a new dialog opens up with a listbox 
 #### Administrator Services:
 
 There are administrator services for accessing the library database for editing member and book information. CRUD functionality is accessed by checking the box for administrator when signing-in.
+
+![](CRUD.JPG)
