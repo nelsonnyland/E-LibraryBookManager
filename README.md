@@ -1,5 +1,6 @@
 # E-Library Book Manager
 ## A Library Kiosk Application
+*Made using .NET Windows Forms*
 ### Collaborators: Nelson Nyland, Krista Betcher
 
 
